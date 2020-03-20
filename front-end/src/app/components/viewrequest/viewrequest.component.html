@@ -1,0 +1,203 @@
+<!--  +++++++++++++++++++  Plantilla 1 ++++++++++++++++++++++++++++++ -->
+<div class="contenido1 container-fluid" *ngIf="this.template_select=='first'">
+	<div class="row justify-content-center">
+		<i class="info" *ngIf="identity.role=='ROLE_MAESTRO'">El filtro debe ser usado en la primer página de la tabla para una búsqueda correcta.</i>
+		<i class="info" *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'">
+				El filtro debe ser usado en la primer página de la tabla para una búsqueda correcta.
+		<br> Pulsa el botón en la columna de "Acciones" para atender la solicitud o ver los detalles. </i>
+	</div> <hr>
+	<div class="row justify-content-center">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 table-responsive">
+			<mat-form-field class="col-8 col-sm-6 col-md-4">
+				<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+			</mat-form-field>
+						
+			<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mytable ">
+				
+				<!-- Nombre Column -->
+				<ng-container matColumnDef="Nombre" > <!--Hace referencia al arrglo displayedColumns-->
+					<th mat-header-cell *matHeaderCellDef> Nombre </th>
+					<td mat-cell *matCellDef="let element" class=""> {{element.name}} </td> <!--despues del punto se refiere al arreglo-->
+				</ng-container>
+				
+				<!-- dificultad Column -->
+				<ng-container matColumnDef="Subtema">
+					<th mat-header-cell *matHeaderCellDef > Subtema </th>
+					<td mat-cell *matCellDef="let element" > <i class="oculta"> {{element.subtopic }} </i>
+					<i class="ocultamd"> {{element.subtopic | slice:0:6}}</i> </td>
+					
+				</ng-container>
+				
+				<!-- Weight Column -->
+				<ng-container matColumnDef="Profesor">
+					<th mat-header-cell *matHeaderCellDef > Profesor </th>
+					<td mat-cell *matCellDef="let element" > {{element.profesor_name}} </td>
+				</ng-container>
+				
+				<!-- Symbol Column -->
+				<ng-container matColumnDef="Estatus">
+					<th mat-header-cell *matHeaderCellDef> Estatus </th>
+					<td mat-cell *matCellDef="let element"> {{element.estatus}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="Acciones" >
+					<th mat-header-cell *matHeaderCellDef [ngStyle]="this.ocultar"> Acciones </th>
+					<td mat-cell *matCellDef="let element" [ngStyle]="this.ocultar"> 
+						<div *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'">
+							<button type="button" (click)="enviar(element)" class="btn btn-info btn-sm" *ngIf="element.estatus!='Pendiente'"
+							data-toggle="tooltip" data-placement="left" title="Ver detalles">
+							<i class="material-icons myicons">visibility</i>
+							<i class="material-icons myicons">info</i>
+							</button>
+							<button type="button" (click)="enviar(element)" class="btn btn-warning btn-sm" *ngIf="element.estatus=='Pendiente'"
+							data-toggle="tooltip" data-placement="left" title="Atender" >
+								<i class="material-icons myicons">delete</i>
+								<i class="material-icons myicons">gavel</i>
+							</button>
+						</div>						
+					</td>
+				</ng-container>											
+				
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+			</table>
+			<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+		</div>
+	</div>
+</div>
+<!--  +++++++++++++++++++ Fin Plantilla 1 ++++++++++++++++++++++++++++++ -->
+
+
+<!--  +++++++++++++++++++  Plantilla 2 ++++++++++++++++++++++++++++++ -->
+<div class="contenido2" *ngIf="this.template_select=='second'">
+	<div class="row justify-content-center">
+		<i class="info" *ngIf="identity.role=='ROLE_MAESTRO'">El filtro debe ser usado en la primer página de la tabla para una búsqueda correcta.</i>
+		<i class="info" *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'">
+				El filtro debe ser usado en la primer página de la tabla para una búsqueda correcta.
+		<br> Pulsa el botón en la columna de "Acciones" para atender la solicitud o ver los detalles. </i>
+	</div> <hr>
+	<div class="row justify-content-center">
+		<div class="table-responsive">
+			<mat-form-field class="col-8 col-sm-6 col-md-4">
+				<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+			</mat-form-field>
+						
+			<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mytable ">
+								
+				<ng-container matColumnDef="Nombre" > <!--Hace referencia al arrglo displayedColumns-->
+					<th mat-header-cell *matHeaderCellDef> Nombre </th>
+					<td mat-cell *matCellDef="let element" > {{element.name}} </td> <!--despues del punto se refiere al arreglo-->
+				</ng-container>
+
+				<ng-container matColumnDef="Subtema">
+					<th mat-header-cell *matHeaderCellDef > Subtema </th>
+					<td mat-cell *matCellDef="let element" > <i class="oculta"> {{element.subtopic }} </i>
+					<i class="ocultamd"> {{element.subtopic | slice:0:6}}</i> </td>					
+				</ng-container>
+								
+				<ng-container matColumnDef="Profesor">
+					<th mat-header-cell *matHeaderCellDef > Profesor </th>
+					<td mat-cell *matCellDef="let element" > {{element.profesor_name}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="Estatus">
+					<th mat-header-cell *matHeaderCellDef> Estatus </th>
+					<td mat-cell *matCellDef="let element"> {{element.estatus}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="Acciones" >
+					<th mat-header-cell *matHeaderCellDef [ngStyle]="this.ocultar"> Acciones </th>
+					<td mat-cell *matCellDef="let element" [ngStyle]="this.ocultar"> 
+						<div *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'">
+							<button type="button" (click)="enviar(element)" class="btn btn-info btn-sm" *ngIf="element.estatus!='Pendiente'"
+							data-toggle="tooltip" data-placement="left" title="Ver detalles">
+							<i class="material-icons myicons">visibility</i>
+							<i class="material-icons myicons">info</i>
+							</button>
+							<button type="button" (click)="enviar(element)" class="btn btn-warning btn-sm" *ngIf="element.estatus=='Pendiente'"
+							data-toggle="tooltip" data-placement="left" title="Atender" >
+								<i class="material-icons myicons">delete</i>
+								<i class="material-icons myicons">gavel</i>
+							</button>
+						</div>
+						
+					</td>
+				</ng-container>															
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+			</table>
+			<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+		</div>
+	</div>
+</div>
+<!--  +++++++++++++++++++ Fin Plantilla 2 ++++++++++++++++++++++++++++++ -->
+
+
+<!--  +++++++++++++++++++  Plantilla 3 ++++++++++++++++++++++++++++++ -->
+<div class="contenido3" *ngIf="this.template_select=='third'">
+	<div class="row justify-content-center">
+		<i class="info" *ngIf="identity.role=='ROLE_MAESTRO'">El filtro debe ser usado en la primer página de la tabla para una búsqueda correcta.</i>
+		<i class="info" *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'">
+				El filtro debe ser usado en la primer página de la tabla para una búsqueda correcta.
+		<br> Pulsa el botón en la columna de "Acciones" para atender la solicitud o ver los detalles. </i>
+	</div> <hr>
+	<div class="row justify-content-center">
+		<div class="col-12 col-md-12 col-lg-10 table-responsive">
+			<mat-form-field class="col-8 col-sm-6 col-md-4">
+				<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+			</mat-form-field>
+						
+			<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mytable ">
+				
+				<!-- Nombre Column -->
+				<ng-container matColumnDef="Nombre" > <!--Hace referencia al arrglo displayedColumns-->
+					<th mat-header-cell *matHeaderCellDef> Nombre </th>
+					<td mat-cell *matCellDef="let element" class=""> {{element.name}} </td> <!--despues del punto se refiere al arreglo-->
+				</ng-container>
+				
+				<!-- dificultad Column -->
+				<ng-container matColumnDef="Subtema">
+					<th mat-header-cell *matHeaderCellDef > Subtema </th>
+					<td mat-cell *matCellDef="let element" > <i class="oculta"> {{element.subtopic }} </i>
+					<i class="ocultamd"> {{element.subtopic | slice:0:6}}</i> </td>
+					
+				</ng-container>
+				
+				<!-- Weight Column -->
+				<ng-container matColumnDef="Profesor">
+					<th mat-header-cell *matHeaderCellDef > Profesor </th>
+					<td mat-cell *matCellDef="let element" > {{element.profesor_name}} </td>
+				</ng-container>
+				
+				<!-- Symbol Column -->
+				<ng-container matColumnDef="Estatus">
+					<th mat-header-cell *matHeaderCellDef> Estatus </th>
+					<td mat-cell *matCellDef="let element"> {{element.estatus}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="Acciones" >
+					<th mat-header-cell *matHeaderCellDef [ngStyle]="this.ocultar"> Acciones </th>
+					<td mat-cell *matCellDef="let element" [ngStyle]="this.ocultar"> 
+						<div *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'">
+							<button type="button" (click)="enviar(element)" class="btn btn-info btn-sm" *ngIf="element.estatus!='Pendiente'"
+							data-toggle="tooltip" data-placement="left" title="Ver detalles">
+							<i class="material-icons myicons">visibility</i>
+							<i class="material-icons myicons">info</i>
+							</button>
+							<button type="button" (click)="enviar(element)" class="btn btn-warning btn-sm" *ngIf="element.estatus=='Pendiente'"
+							data-toggle="tooltip" data-placement="left" title="Atender" >
+								<i class="material-icons myicons">delete</i>
+								<i class="material-icons myicons">gavel</i>
+							</button>
+						</div>						
+					</td>
+				</ng-container>											
+				
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+			</table>
+			<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+		</div>
+	</div>
+</div>
+<!--  +++++++++++++++++++ Fin Plantilla 3 ++++++++++++++++++++++++++++++ -->

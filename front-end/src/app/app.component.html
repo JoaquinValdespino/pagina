@@ -1,0 +1,962 @@
+
+<!-- ********************************* No LOGIN Y NO ASSIGNATURA ********************************************-->
+<!-- +++++++++++  Menu  +++++++++++++++++++-->
+<div class="container-fluid" *ngIf="!this.template && !identity" >
+    <div class="row justify-content-center">
+        <nav class="navbar mymenu0 navbar-dark bg-dark navbar-expand-lg fixed-top col-10 offset-1">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu_collapse" aria-controls="menu_collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu_collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a [routerLink]="['/index']" class="nav-link">
+                            Material D
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav d-flex flex-row-reverse ">
+                    <li nav-item>
+                        <a  [routerLink]="['/login']" 
+                            [routerLinkActive]="['active']" class="nav-link">
+                            <i class="glyphicon glyphicon-log-in"></i>
+                            Iniciar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>   
+</div>
+<!-- +++++++++++ FIn Menu  +++++++++++++++++++-->
+
+<!-- ********************************* Usuario multimedia ********************************************-->
+<!-- +++++++++++  Menu  +++++++++++++++++++-->
+<div class="container-fluid" *ngIf="identity && identity.role=='ROLE_ADMIN'" >
+    <nav class="navbar mymenu0 navbar-dark bg-dark navbar-expand-lg fixed-top col-8 offset-2">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#desplmulti" aria-controls="desplmulti" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="desplmulti">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active" *ngIf="identity">
+                    <a  [routerLink]="['/inicio']" 
+                        [routerLinkActive]="['active']"
+                        class="nav-link" >
+                        <i class="material-icons myicons">home</i>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="identity">
+                    <a  [routerLink]="['/registro']" 
+                        [routerLinkActive]="['active']"
+                        *ngIf="identity.role=='ROLE_ADMIN'" class="nav-link">
+                        <i class="material-icons myicons">person_add</i>
+                        Nueva Asignatura
+                    </a>
+                </li>
+                <li *ngIf="identity" class="dropdown nav-item">
+                    <a  class="dropdown-toggle nav-link" 
+                        data-toggle="dropdown" href="#" >
+                        <i class="material-icons myicons">settings</i>
+                        Administrar Asignaturas 
+                    </a>
+                    <ul class="dropdown-menu dropmulti" >
+                        <li class="dropdown-item dropItemmulti" *ngIf="identity">
+                            <a  [routerLink]="['/updateProfesors']" 
+                                [routerLinkActive]="['active']"                                 
+                                class="nav-link">
+                                <i class="material-icons myicons">people</i>
+                                Profesores
+                            </a>
+                        </li>
+                        <li class="dropdown-item dropItemmulti" *ngIf="identity">
+                            <a  [routerLink]="['/loadprogram']" 
+                                [routerLinkActive]="['active']"
+                                class="nav-link">
+                                <i class="material-icons myicons">library_add</i>
+                                Cargar temario
+                            </a>
+                        </li>
+                        <li class="dropdown-item dropItemmulti" *ngIf="identity">
+                            <a  [routerLink]="['/updatePassword']" 
+                                [routerLinkActive]="['active']"
+                                class="nav-link">
+                                <i class="material-icons myicons">lock_open</i>
+                                Restablecer contraseñas
+                            </a>                  
+                    </ul>
+                </li> <!-- fin dropdow Administrar asignaturas -->                                
+            </ul>            
+            <ul class="navbar-nav d-flex flex-row-reverse ">                
+                <li class="dropdown nav-item">
+                        <a  class="dropdown-toggle nav-link" 
+                            data-toggle="dropdown" href="#"
+                            >
+                            <i class="material-icons myicons">person_pin</i>
+                            {{identity.name}}
+                        </a>
+                    
+                    <ul class="dropdown-menu dropmulti">                               
+                        <li class="dropdown-item dropItemmulti">
+                            <a  class="pointer" 
+                            (click)="logout()"                            
+                            class="nav-link">
+                            <i class="material-icons myicons">power_settings_new</i>    
+                            Salir
+                            </a>
+                        </li>
+                    </ul>
+                </li>     
+                <li class="">
+                    <img src="{{url + 'getImage/' +  identity.assignment_name}}" class="profile">
+                </li>               
+            </ul>
+        </div>
+    </nav>
+</div>
+<!-- +++++++++++ FIn Menu  +++++++++++++++++++-->
+
+ <!--IMPORTANTE -->   
+ <router-outlet ></router-outlet>
+ <notifier-container></notifier-container>
+
+<!-- +++++++++++  Footer  +++++++++++++++++++-->
+<footer class="footer footer0 fixed-bottom navbar-dark bg-dark col-8 offset-2"  *ngIf="(!this.template && !identity) || (identity && identity.role=='ROLE_ADMIN')">
+    <div class="container-fluid ">
+        <!--
+        <div class="row redes1 justify-content-center">
+            <div class="col-4 col-sm-2 col-md-2 col-lg-2 col-xl-1">
+                <a href="https://www.facebook.com/multimediaFI/" target="blank"> 
+                    <img    src="{{url + 'getsImage/' + 'facebook.png'}}" 
+                            alt="Facebook"
+                            class="facebook0"> 
+                </a>
+            </div>
+            <div class="col-4 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                <a href="https://mmedia1.fi-b.unam.mx" target="blank"> 
+                    <img    src="{{url + 'getsImage/' + 'multi.png'}}" 
+                            alt="LMeI"
+                            class="multi0"> 
+                </a>
+            </div>
+            <div class="col-4 col-sm-2 col-md-2 col-lg-2 col-xl-1">
+                <a href="https://twitter.com/MultimediaUNAM" target="blank"> 
+                    <img    src="{{url + 'getsImage/' + 'twitter.png'}}" 
+                            alt="LMeI"
+                            class="twitter0"> 
+                </a>
+            </div>
+        </div>-->
+        <div class="row copyr0 justify-content-center ">
+                Laboratorio de Multimedia e Internet<br />
+                © Hecho en México, todos los derechos reservados 2018
+        </div>
+    </div>
+    
+</footer>
+<!-- +++++++++++  Fin Footer  +++++++++++++++++++-->
+<!-- ********************************* FIN No LOGIN Y NO ASSIGNATURA ********************************************-->
+
+    
+<!-- ********************************* Plantilla PLANTILLA 1 ********************************************-->
+<!-- +++++++++++ Menu PLANTILLA 1 +++++++++++++++++++-->
+<div class="container-fluid" *ngIf="this.template && this.template_select=='first'" >
+    <div class="container-fluid fixed-top ">
+        <div class="myheader row justify-content-center" [ngStyle]="this.style_header">                
+                <div class="col-3">
+                    <img class="img-fluid loghead1 mx-auto d-block" src="{{url + 'getsImage/' +  this.logoUnam}}">
+                </div>
+                <div class="assig col-6" [ngStyle]="this.style_assig_name">
+                    <b class="assig_name">{{assignment_name}}</b>
+                </div>
+                <div class="col-3">
+                    <img class="img-fluid loghead1 mx-auto d-block" src="{{url + 'getsImage/' + this.logoFi }}">
+                </div>
+        </div>
+        <div class="row">
+                <nav class="navbar mynavbar1 navbar-dark navbar-expand-lg col-12" [ngStyle]="this.template.style_menu">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#despl" aria-controls="despl" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <!--<a class="navbar-brand" href="#">Navbar</a>-->
+                                              
+                        <div id="despl" class="collapse navbar-collapse">
+                            <ul class="navbar-nav mr-auto ">                        
+                                <li class="nav-item active">
+                                    <a	[ngStyle]="this.template.style_menu" 
+                                        [routerLink]="['/index']" 
+                                        [routerLinkActive]="['active']" 
+                                        *ngIf="!identity"
+                                        class="nav-link">
+                                        <i class="material-icons myicons">school </i>	
+                                        Asignaturas
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                        <a	[ngStyle]="this.template.style_menu" 
+                                        [routerLink]="['/inicio']" 	
+                                        [routerLinkActive]="['active']"  
+                                        class="nav-link">
+                                        <i class="material-icons myicons">home </i>	 
+                                        Inicio
+                                    </a>
+                                </li>
+                                <li class="nav-item" *ngIf="!identity">
+                                    <a	[ngStyle]="this.template.style_menu" 
+                                        [routerLink]="['/selectsubtopic']" 
+                                        [routerLinkActive]="['active']"
+                                        class="nav-link">
+                                        <i class="material-icons myicons">search</i>	 
+                                        Buscar Material
+                                    </a>
+                                </li>
+                                <li *ngIf="identity" class="dropdown nav-item">
+                                    <a  [ngStyle]="this.template.style_menu" 
+                                        class="dropdown-toggle nav-link" 
+                                        data-toggle="dropdown" href="#"
+                                        >
+                                        <i class="material-icons myicons">folder</i>
+                                        Material 
+                                    </a>
+                                    <ul class="dropdown-menu mydropdown1" [ngStyle]="this.template.style_menu" >
+                                        <li *ngIf="identity">
+                                            <a  [ngStyle]="this.template.style_menu"  
+                                                [routerLink]="['/addmaterial']" 
+                                                [routerLinkActive]="['active']" 
+                                                *ngIf="identity.role=='ROLE_MAESTRO'"
+                                                class="nav-link dropdown-item">
+                                                <i class="material-icons myicons">library_add</i>
+                                                Agregar Material
+                                            </a>
+                                        </li>
+                                        <li *ngIf="identity">
+                                            <a  [ngStyle]="this.template.style_menu"  
+                                                [routerLink]="['/solicitar_eliminacion']" 
+                                                [routerLinkActive]="['active']" 
+                                                *ngIf="identity.role=='ROLE_MAESTRO'"
+                                                class="nav-link dropdown-item">
+                                                <i class="material-icons myicons">delete</i>
+                                                Solicitar Eliminacion
+                                            </a>
+                                        </li>
+                                        <li *ngIf="identity">
+                                            <a  [ngStyle]="this.template.style_menu"  
+                                                [routerLink]="['/viewrequest']" 
+                                                [routerLinkActive]="['active']" 
+                                                class="nav-link dropdown-item">
+                                                <i class="material-icons myicons">delete_sweep</i>
+                                                Ver Solicitudes de Eliminacion
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a  [ngStyle]="this.template.style_menu" 
+                                                [routerLink]="['/selectsubtopic']" 
+                                                [routerLinkActive]="['active']"
+                                                class="nav-link dropdown-item">
+                                                <i class="material-icons myicons">search</i>	 
+                                                Buscar Material
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li> <!-- fin dropdow material -->
+                                <li *ngIf="identity" class="dropdown nav-item">
+                                    <a  [ngStyle]="this.template.style_menu" 
+                                        class="dropdown-toggle nav-link" 
+                                        data-toggle="dropdown" href="#"
+                                        *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'"
+                                        >
+                                        <i class="material-icons myicons">web</i>
+                                        Plantilla 
+                                    </a>
+                                    <ul class="dropdown-menu mydropdown1" [ngStyle]="this.template.style_menu" >
+                                        <li >
+                                            <a	[ngStyle]="this.template.style_menu" 
+                                                [routerLink]="['/updateTemp']" 
+                                                [routerLinkActive]="['active']" 
+                                                *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'"
+                                                class="nav-link dropdown-item">
+                                                <i class="material-icons myicons">palette</i>
+                                                Editar Plantilla
+                                            </a>
+                                        </li>
+                                        <li >
+                                            <a	[ngStyle]="this.template.style_menu" 
+                                                [routerLink]="['/selectTemplate']" 
+                                                [routerLinkActive]="['active']" 
+                                                *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'"
+                                                class="nav-link dropdown-item">
+                                                <i class="material-icons myicons">style</i>
+                                                Seleccionar Plantilla
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li><!-- fin dropdown plantilla -->
+                                <li>
+                                    <a	[ngStyle]="this.template.style_menu" 
+                                        [routerLink]="['/contacto']" 
+                                        [routerLinkActive]="['active']" 
+                                        class="nav-link"> 
+                                        <i class="material-icons myicons">person_pin</i>	
+                                        Contacto
+                                    </a>
+                                </li>
+                                <li *ngIf="assignment==1">
+                                    <a	[ngStyle]="this.template.style_menu" 
+                                        href="http://mmedia1.fi-b.unam.mx/tablasdeverdad/"
+                                        target="blank"
+                                        class="nav-link"> 
+                                        <i class="material-icons myicons">code</i>	
+                                        Programa tablas de verdad
+                                    </a>
+                                </li>
+                                <li *ngIf="template.assignment_name=='Lenguajes Formales y Autómatas'">
+                                    <a	[ngStyle]="this.template.style_menu" 
+                                        href="http://mmedia1.fi-b.unam.mx/gramaticas/"
+                                        target="blank"
+                                        class="nav-link"> 
+                                        <i class="material-icons myicons">code</i>	
+                                        Programa Gramáticas
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="mynav1 nav navbar-nav navbar-right" *ngIf="!identity">
+                                <li>
+                                    <a	 
+                                        [ngStyle]="this.template.style_menu"
+                                        [routerLink]="['/login']" 
+                                        [routerLinkActive]="['active']"
+                                        class="nav-link">
+                                        <i class="material-icons myicons">person</i>	
+                                        Iniciar Sesión
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="mynav1 nav navbar-nav navbar-right" *ngIf="identity">
+                                <li class="">
+                                    <img src="{{url + 'getImage/' +  identity.assignment_name}}" class="profile">
+                                </li>
+                                <li class="dropdown">
+                                        <a  [ngStyle]="this.template.style_menu" 
+                                            class="dropdown-toggle nav-link" 
+                                            data-toggle="dropdown" href="#"
+                                            >
+                                            <i class="material-icons myicons">person_pin</i>
+                                            {{identity.name}}
+                                        </a>
+                                    
+                                    <ul class="dropdown-menu mydropdown1" [ngStyle]="this.template.style_menu">
+                                        <li *ngIf="identity.role== 'ROLE_ADMIN_MAESTRO'">
+                                            <a  
+                                            [routerLink]="['/mydata']" 
+                                            [ngStyle]="this.template.style_menu"
+                                            class="nav-link dropdown-item">
+                                            <i class="material-icons myicons">add_a_photo</i>                                                    
+                                            Actualizar imagen
+                                            </a>
+                                        </li>
+                                        <li *ngIf="identity.role== 'ROLE_ADMIN_MAESTRO'">
+                                            <a  
+                                            [routerLink]="['/updatePassword']" 
+                                            [ngStyle]="this.template.style_menu"
+                                            class="nav-link dropdown-item">                                                    
+                                            <i class="material-icons myicons">lock</i>    
+                                            Actualizar contraseñas
+                                            </a>
+                                        </li>                                               
+                                        <li >
+                                            <a  
+                                            (click)="logout()"
+                                            [ngStyle]="this.template.style_menu"
+                                            class="nav-link dropdown-item">
+                                            <i class="material-icons myicons">power_settings_new</i>    
+                                            Salir
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!--fin nav-collapse -->
+                            
+                      </nav>
+        </div>
+    </div>
+    
+</div>
+<!-- +++++++++++ FIN Menu PLANTILLA 1 +++++++++++++++++++-->
+
+<!-- +++++++++++ Footer PLANTILLA 1 +++++++++++++++++++-->
+<footer class="footer footer1 fixed-bottom" [ngStyle]="this.template.style_menu" *ngIf="this.template && this.template_select=='first'" >
+		<div class="container-fluid">
+            <div class="row redes1 justify-content-center">
+                    <div class="col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1">
+                            <a href="https://www.facebook.com/multimediaFI/" target="blank"> 
+                                <img    src="{{url + 'getsImage/' + 'facebook.png'}}" 
+                                        alt="Facebook"
+                                        class="facebook1 mx-auto d-block img-fluid"> 
+                            </a>
+                        </div>
+                        <div class="col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1">
+                                <a href="https://mmedia1.fi-b.unam.mx" target="blank"> 
+                                    <img    src="{{url + 'getsImage/' + 'multi.png'}}" 
+                                            alt="LMeI"
+                                            class="multi1 mx-auto d-block img-fluid"> 
+                                </a>
+                        </div>
+                        <div class="col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1">
+                                <a href="https://twitter.com/MultimediaUNAM" target="blank"> 
+                                    <img    src="{{url + 'getsImage/' + 'twitter.png'}}" 
+                                            alt="LMeI"
+                                            class="twitter1 mx-auto d-block img-fluid}"> 
+                                </a>
+                        </div>
+            </div>
+            <div class="row copyr1 justify-content-center ">
+                    Laboratorio de Multimedia e Internet<br />
+                    © Hecho en México, todos los derechos reservados 2018
+            </div>
+        </div>    
+</footer>
+<!-- +++++++++++ Fin Footer PLANTILLA 1 +++++++++++++++++++-->
+
+<!-- ********************************* Fin Plantilla PLANTILLA 1********************************************-->
+
+
+<!-- +++++++++++++++++++++++++++++++++PLANTILLA 2 menu izquierdo+++++++++++++++++++++++++++++++++-->
+<div class="container-fluid leftnav" *ngIf="this.template && this.template_select=='second'"  [ngStyle]="this.style_header"> 
+    <div class="menu2" [ngStyle]="this.template.style_menu">
+        
+        <div class="item">
+            <i class="material-icons myicons">menu</i>
+        </div>
+        <nav class="navbar item2">
+            <ul class="navbar-nav mr-auto ">                        
+                <li class="nav-item active">
+                    <a	[ngStyle]="this.template.style_menu" 
+                        [routerLink]="['/index']" 
+                        [routerLinkActive]="['active']" 
+                        *ngIf="!identity"
+                        class="nav-link">
+                        <i class="material-icons myicons">school </i>	
+                        <i class="menu-item-name">Asignaturas</i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                        <a	[ngStyle]="this.template.style_menu" 
+                        [routerLink]="['/inicio']" 	
+                        [routerLinkActive]="['active']"  
+                        class="nav-link">
+                        <i class="material-icons myicons">home </i>	 
+                        <i class="menu-item-name">Inicio</i>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!identity">
+                    <a	[ngStyle]="this.template.style_menu" 
+                        [routerLink]="['/selectsubtopic']" 
+                        [routerLinkActive]="['active']"
+                        class="nav-link">
+                        <i class="material-icons myicons">search</i>	 
+                        <i class="menu-item-name">Buscar Material</i>
+                    </a>
+                </li>
+                <li *ngIf="identity" class="dropdown nav-item ">
+                    <a  [ngStyle]="this.template.style_menu" 
+                        class="dropdown-toggle nav-link" 
+                        data-toggle="dropdown" href="#">
+                        <i class="material-icons myicons">folder</i>
+                        <i class="menu-item-name">Material </i>
+                    </a>
+                    <ul class="dropdown-menu mydropright" [ngStyle]="this.template.style_menu" >
+                        <li *ngIf="identity">
+                            <a  [ngStyle]="this.template.style_menu"  
+                                [routerLink]="['/addmaterial']" 
+                                [routerLinkActive]="['active']" 
+                                *ngIf="identity.role=='ROLE_MAESTRO'"
+                                class="nav-link dropdown-item ajuste">
+                                <i class="material-icons myicons">library_add</i>
+                                Agregar Material
+                            </a>
+                        </li>
+                        <li *ngIf="identity">
+                            <a  [ngStyle]="this.template.style_menu"  
+                                [routerLink]="['/solicitar_eliminacion']" 
+                                [routerLinkActive]="['active']" 
+                                *ngIf="identity.role=='ROLE_MAESTRO'"
+                                class="nav-link dropdown-item ajuste">
+                                <i class="material-icons myicons">delete</i>
+                                Solicitar Eliminación
+                            </a>
+                        </li>
+                        <li *ngIf="identity">
+                            <a  [ngStyle]="this.template.style_menu"  
+                                [routerLink]="['/viewrequest']" 
+                                [routerLinkActive]="['active']" 
+                                class="nav-link dropdown-item ajuste">
+                                <i class="material-icons myicons">delete_sweep</i>
+                                Ver Solicitudes de Eliminación
+                            </a>
+                        </li>
+                        <li>
+                            <a  [ngStyle]="this.template.style_menu" 
+                                [routerLink]="['/selectsubtopic']" 
+                                [routerLinkActive]="['active']"
+                                class="nav-link dropdown-item ajuste">
+                                <i class="material-icons myicons">search</i>	 
+                                Buscar Material
+                            </a>
+                        </li>
+                    </ul>
+                </li> <!-- fin dropdow material -->
+                <li *ngIf="identity" class="dropdown nav-item ">
+                    <a  [ngStyle]="this.template.style_menu" 
+                        class="dropdown-toggle nav-link" 
+                        data-toggle="dropdown" href="#"
+                        *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'" >
+                        <i class="material-icons myicons">web</i>
+                        <i class="menu-item-name">Plantilla </i>
+                    </a>
+                    <ul class="dropdown-menu mydropright" [ngStyle]="this.template.style_menu" >
+                        <li >
+                            <a	[ngStyle]="this.template.style_menu" 
+                                [routerLink]="['/updateTemp']" 
+                                [routerLinkActive]="['active']" 
+                                *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'"
+                                class="nav-link dropdown-item ajuste">
+                                <i class="material-icons myicons">palette</i>
+                                Editar Plantilla
+                            </a>
+                        </li>
+                        <li >
+                            <a	[ngStyle]="this.template.style_menu" 
+                                [routerLink]="['/selectTemplate']" 
+                                [routerLinkActive]="['active']" 
+                                *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'"
+                                class="nav-link dropdown-item ajuste">
+                                <i class="material-icons myicons">style</i>
+                                Seleccionar Plantilla
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- fin dropdown plantilla -->
+                <li>
+                    <a	[ngStyle]="this.template.style_menu" 
+                        [routerLink]="['/contacto']" 
+                        [routerLinkActive]="['active']" 
+                        class="nav-link"> 
+                        <i class="material-icons myicons">person_pin</i>	
+                        <i class="menu-item-name">Contacto</i>
+                    </a>
+                </li>
+                <li *ngIf="assignment==1">
+                    <a	[ngStyle]="this.template.style_menu" 
+                        href="http://mmedia1.fi-b.unam.mx/tablasdeverdad/"
+                        target="blank"
+                        class="nav-link"> 
+                        <i class="material-icons myicons">code</i>	
+                        Programa tablas de verdad
+                    </a>
+                </li>
+                <li *ngIf="template.assignment_name=='Lenguajes Formales y Autómatas'">
+                    <a	[ngStyle]="this.template.style_menu" 
+                        href="http://mmedia1.fi-b.unam.mx/gramaticas/"
+                        target="blank"
+                        class="nav-link"> 
+                        <i class="material-icons myicons">code</i>	
+                        Programa Gramáticas
+                    </a>
+                </li>
+            </ul>                                     
+        </nav>
+    </div>
+    <div class="footer2 item" [ngStyle]="this.template.style_menu" >
+        <i class="material-icons myicons">info</i>        
+        <div class="ajuste oculta2">
+                Laboratorio de Multimedia e Internet<br />
+                © Hecho en México, todos los derechos reservados 2018
+        </div>        
+    </div>
+    <!--/.Footer-->
+</div>
+<!-- +++++++++++++++++++++++++++++++++PLANTILLA 2 menu derecho+++++++++++++++++++++++++++++++++-->
+<div class="container-fluid" *ngIf="this.template && this.template_select=='second'" >        
+    <nav class="navbar navbar-expand-lg fixed-top col-8 offset-2 col-md-4 offset-md-4 header2" [ngStyle]="this.template.style_menu">
+        <div class="assig2" >
+            {{assignment_name}} 
+        </div>
+    </nav>        
+    </div>
+<div class=" rightnav" *ngIf="this.template && this.template_select=='second'" [ngStyle]="this.style_header">
+    <div class="menu2">
+        <nav class="navbar item3">        
+            <ul class="navbar-nav navbar-right mr-auto" *ngIf="!identity" [ngStyle]="this.template.style_menu">
+                    <li>
+                        <a	[ngStyle]="this.template.style_menu"
+                            [routerLink]="['/login']" 
+                            [routerLinkActive]="['active']"
+                            class="nav-link">
+                            <i class="material-icons myicons">person</i>	
+                            <i class="menu-item-name">Iniciar Sesión</i>
+                        </a>
+                    </li>
+            </ul>
+            <ul class="navbar-nav navbar-right mr-auto " *ngIf="identity" [ngStyle]="this.template.style_menu">
+                <li class="menu-item-name">
+                    <img src="{{url + 'getImage/' +  identity.assignment_name}}" class=" d-block mx-auto w-50">
+                </li>
+                <li class="dropdown">
+                        <a  [ngStyle]="this.template.style_menu" 
+                            class="dropdown-toggle nav-link" 
+                            data-toggle="dropdown" href="#" >
+                            <i class="material-icons myicons">person_pin</i>
+                            <i class="menu-item-name">{{identity.name}}</i>
+                        </a>
+                    
+                    <ul class="dropdown-menu mydropright" [ngStyle]="this.template.style_menu">
+                        <li *ngIf="identity.role== 'ROLE_ADMIN_MAESTRO'">
+                            <a  
+                            [routerLink]="['/mydata']" 
+                            [ngStyle]="this.template.style_menu"
+                            class="nav-link dropdown-item ajuste">
+                            <i class="material-icons myicons">add_a_photo</i>                                                    
+                            Actualizar imagen
+                            </a>
+                        </li>
+                        <li *ngIf="identity.role== 'ROLE_ADMIN_MAESTRO'">
+                            <a  
+                            [routerLink]="['/updatePassword']" 
+                            [ngStyle]="this.template.style_menu"
+                            class="nav-link dropdown-item ajuste">                                                    
+                            <i class="material-icons myicons">lock</i>    
+                            Actualizar contraseñas
+                            </a>
+                        </li>                                               
+                        <li >
+                            <a  
+                            (click)="logout()"
+                            [ngStyle]="this.template.style_menu"
+                            class="nav-link dropdown-item ajuste">
+                            <i class="material-icons myicons">power_settings_new</i>    
+                            Salir
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="logos menu2">
+            <img src="{{url + 'getsImage/' +  this.logoUnam}}" class="d-block mx-auto w-100">
+    </div>
+    <div class="logos">
+            <img src="{{url + 'getsImage/' +  this.logoFi}}" class="d-block mx-auto w-100">   
+    </div>
+</div> 
+
+<!-- ********************************************* Fin menu SEGUNDA PLANTILLA *******************************************************-->
+
+
+<!-- +++++++++++++++++++++++++++++++++  PLANTILLA 3    +++++++++++++++++++++++++++++++++-->
+<div class="container-fluid" *ngIf="this.template && this.template_select=='third'" >
+    <div class="container-fluid fixed-top ">
+        <div class="row justify-content-center" >
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="header3 row justify-content-center" [ngStyle]="this.style_header">
+                    <div class="col-2 col-md-3">
+                        <img class="img-fluid loghead1 mx-auto d-block" src="{{url + 'getsImage/' +  this.logoUnam}}">
+                    </div>
+                    <div class="assig3 col-6" [ngStyle]="this.style_assig_name" >
+                        <b class="assig_name3">{{assignment_name}}</b>
+                    </div>
+                    <div class="col-2 col-md-3">
+                        <img class="img-fluid loghead1 mx-auto d-block" src="{{url + 'getsImage/' + this.logoFi }}">
+                    </div>
+                </div>  
+            </div>                                
+        </div>
+        <div class="row  justify-content-center">            
+            <nav class="login3 navbar navbar-expand-sm col-10 col-md-8 col-lg-6" [ngStyle]="this.template.style_menu">               
+                <div class="row w-100 justify-content-center">
+                    <div class="col-8 col-lg-6">
+                        <ul class="navbar-nav mr-auto navbar-right justify-content-center"  *ngIf="!identity" [ngStyle]="this.template.style_menu">
+                                <li >
+                                    <a	[ngStyle]="this.template.style_menu"
+                                        [routerLink]="['/login']" 
+                                        [routerLinkActive]="['active']"
+                                        class="nav-link">
+                                        <i class="material-icons myicons">person</i>	
+                                        Iniciar Sesión
+                                    </a>
+                                </li>
+                        </ul>
+                        <ul class="navbar-nav mr-auto navbar-right justify-content-center" *ngIf="identity" [ngStyle]="this.template.style_menu">
+                                
+                                <li class="col-4 col-md-4">
+                                    <img src="{{url + 'getImage/' +  identity.assignment_name}}" class="img-fluid mx-auto d-block w-100">
+                                </li>
+                                <li class="dropdown col-10 col-md-8">
+                                        <a  [ngStyle]="this.template.style_menu" 
+                                            class="dropdown-toggle nav-link" 
+                                            data-toggle="dropdown" href="#" >
+                                            <i class="material-icons myicons">person_pin</i>
+                                            {{identity.name}}
+                                        </a>
+                                    
+                                    <ul class="dropdown-menu" [ngStyle]="this.template.style_menu">
+                                        <li *ngIf="identity.role== 'ROLE_ADMIN_MAESTRO'">
+                                            <a  
+                                            [routerLink]="['/mydata']" 
+                                            [ngStyle]="this.template.style_menu"
+                                            class="nav-link dropdown-item ajuste">
+                                            <i class="material-icons myicons">add_a_photo</i>                                                    
+                                            Actualizar imagen
+                                            </a>
+                                        </li>
+                                        <li *ngIf="identity.role== 'ROLE_ADMIN_MAESTRO'">
+                                            <a  
+                                            [routerLink]="['/updatePassword']" 
+                                            [ngStyle]="this.template.style_menu"
+                                            class="nav-link dropdown-item ajuste">                                                    
+                                            <i class="material-icons myicons">lock</i>    
+                                            Actualizar contraseñas
+                                            </a>
+                                        </li>                                               
+                                        <li >
+                                            <a  
+                                            (click)="logout()"
+                                            [ngStyle]="this.template.style_menu"
+                                            class="nav-link dropdown-item ajuste">
+                                            <i class="material-icons myicons">power_settings_new</i>    
+                                            Salir
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                        </ul>
+                    </div>                    
+                </div>               
+            </nav>                        
+        </div>               
+    </div>
+</div>
+<div class=""  *ngIf="this.template && this.template_select=='third'">
+    <div class="container-fluid fix-bottom">
+        <div class="row justify-content-center">
+            <nav class="nav3 navbar  navbar-dark navbar-expand-lg col-10 col-md-8" [ngStyle]="this.template.style_menu">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#despl" aria-controls="despl" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#">Navbar</a>-->
+                                        
+                <div id="despl" class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto ">                        
+                            <li class="nav-item active">
+                                <a	[ngStyle]="this.template.style_menu" 
+                                    [routerLink]="['/index']" 
+                                    [routerLinkActive]="['active']" 
+                                    *ngIf="!identity"
+                                    class="nav-link">
+                                    <i class="material-icons myicons">school </i>	
+                                    Asignaturas
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                    <a	[ngStyle]="this.template.style_menu" 
+                                    [routerLink]="['/inicio']" 	
+                                    [routerLinkActive]="['active']"  
+                                    class="nav-link">
+                                    <i class="material-icons myicons">home </i>	 
+                                    Inicio
+                                </a>
+                            </li>
+                            <li class="nav-item" *ngIf="!identity">
+                                <a	[ngStyle]="this.template.style_menu" 
+                                    [routerLink]="['/selectsubtopic']" 
+                                    [routerLinkActive]="['active']"
+                                    class="nav-link">
+                                    <i class="material-icons myicons">search</i>	 
+                                    Buscar Material
+                                </a>
+                            </li>
+                            <li *ngIf="identity" class="dropup nav-item">
+                                <a  [ngStyle]="this.template.style_menu" 
+                                    class="dropdown-toggle nav-link" 
+                                    data-toggle="dropdown" href="#"
+                                    >
+                                    <i class="material-icons myicons">folder</i>
+                                    Material 
+                                </a>
+                                <ul class="dropdown-menu mydrop3" [ngStyle]="this.template.style_menu" >
+                                    <li *ngIf="identity">
+                                        <a  [ngStyle]="this.template.style_menu"  
+                                            [routerLink]="['/addmaterial']" 
+                                            [routerLinkActive]="['active']" 
+                                            *ngIf="identity.role=='ROLE_MAESTRO'"
+                                            class="nav-link dropdown-item">
+                                            <i class="material-icons myicons">library_add</i>
+                                            Agregar Material
+                                        </a>
+                                    </li>
+                                    <li *ngIf="identity">
+                                        <a  [ngStyle]="this.template.style_menu"  
+                                            [routerLink]="['/solicitar_eliminacion']" 
+                                            [routerLinkActive]="['active']" 
+                                            *ngIf="identity.role=='ROLE_MAESTRO'"
+                                            class="nav-link dropdown-item">
+                                            <i class="material-icons myicons">delete</i>
+                                            Solicitar Eliminacion
+                                        </a>
+                                    </li>
+                                    <li *ngIf="identity">
+                                        <a  [ngStyle]="this.template.style_menu"  
+                                            [routerLink]="['/viewrequest']" 
+                                            [routerLinkActive]="['active']" 
+                                            class="nav-link dropdown-item">
+                                            <i class="material-icons myicons">delete_sweep</i>
+                                            Ver Solicitudes de Eliminacion
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a  [ngStyle]="this.template.style_menu" 
+                                            [routerLink]="['/selectsubtopic']" 
+                                            [routerLinkActive]="['active']"
+                                            class="nav-link dropdown-item">
+                                            <i class="material-icons myicons">search</i>	 
+                                            Buscar Material
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li> <!-- fin dropdow material -->
+                            <li *ngIf="identity" class="dropup nav-item">
+                                <a  [ngStyle]="this.template.style_menu" 
+                                    class="dropdown-toggle nav-link" 
+                                    data-toggle="dropdown" href="#"
+                                    *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'"
+                                    >
+                                    <i class="material-icons myicons">web</i>
+                                    Plantilla 
+                                </a>
+                                <ul class="dropdown-menu mydrop3" [ngStyle]="this.template.style_menu" >
+                                    <li >
+                                        <a	[ngStyle]="this.template.style_menu" 
+                                            [routerLink]="['/updateTemp']" 
+                                            [routerLinkActive]="['active']" 
+                                            *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'"
+                                            class="nav-link dropdown-item">
+                                            <i class="material-icons myicons">palette</i>
+                                            Editar Plantilla
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a	[ngStyle]="this.template.style_menu" 
+                                            [routerLink]="['/selectTemplate']" 
+                                            [routerLinkActive]="['active']" 
+                                            *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'"
+                                            class="nav-link dropdown-item">
+                                            <i class="material-icons myicons">style</i>
+                                            Seleccionar Plantilla
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li><!-- fin dropdown plantilla -->
+                            <li>
+                                <a	[ngStyle]="this.template.style_menu" 
+                                    [routerLink]="['/contacto']" 
+                                    [routerLinkActive]="['active']" 
+                                    class="nav-link"> 
+                                    <i class="material-icons myicons">person_pin</i>	
+                                    Contacto
+                                </a>
+                            </li>
+                            <li *ngIf="assignment==1">
+                                <a	[ngStyle]="this.template.style_menu" 
+                                    href="http://mmedia1.fi-b.unam.mx/tablasdeverdad/"
+                                    target="blank"
+                                    class="nav-link"> 
+                                    <i class="material-icons myicons">code</i>	
+                                    Programa tablas de verdad
+                                </a>
+                            </li>
+                            <li *ngIf="template.assignment_name=='Lenguajes Formales y Autómatas'">
+                                <a	[ngStyle]="this.template.style_menu" 
+                                    href="http://mmedia1.fi-b.unam.mx/gramaticas/"
+                                    target="blank"
+                                    class="nav-link"> 
+                                    <i class="material-icons myicons">code</i>	
+                                    Programa Gramáticas
+                                </a>
+                            </li>
+                        </ul>                                 
+                </div><!--fin nav-collapse -->
+                <div class="footer3" [ngStyle]="this.template.style_menu" >
+                    <i class="material-icons myicons">info</i>        
+                    <div class="oculta3">
+                            Laboratorio de Multimedia e Internet<br />
+                            © Hecho en México, todos los derechos reservados 2018
+                    </div>        
+                </div>
+            </nav>
+         
+        </div>
+    </div>
+   <!--
+    <div class="menu3 container-fluid">	
+        <ul class="nav navbar-nav">
+            
+            <li *ngIf="identity" class="dropup">
+                <a  [ngStyle]="this.template.style_menu" 
+                    class="dropdown-toggle" 
+                    data-toggle="dropdown" href="#"
+                    *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'">
+                    <i class="glyphicon glyphicon-tag" aria-hidden="true"></i>
+                    Plantilla <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu mydrop3" [ngStyle]="this.template.style_menu" >
+                    <li >
+                        <a	[ngStyle]="this.template.style_menu" 
+                            [routerLink]="['/updateTemp']" 
+                            [routerLinkActive]="['active']" 
+                            *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'">
+                            <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            Editar Plantilla
+                        </a>
+                    </li>
+                    <li >
+                        <a	[ngStyle]="this.template.style_menu" 
+                            [routerLink]="['/selectTemplate']" 
+                            [routerLinkActive]="['active']" 
+                            *ngIf="identity.role=='ROLE_ADMIN_MAESTRO'">
+                            <i class="glyphicon glyphicon-check" aria-hidden="true"></i>
+                            Seleccionar Plantilla
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li>
+                <a	[ngStyle]="this.template.style_menu" 
+                    [routerLink]="['/contacto']" 
+                    [routerLinkActive]="['active']" > 
+                    <i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>
+                    Contacto
+                </a>
+            </li>
+        </ul>
+       
+    </div>-->
+</div>
+<!-- ************************************************************** FIN PLANTILLA 3 ****************************************************-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       

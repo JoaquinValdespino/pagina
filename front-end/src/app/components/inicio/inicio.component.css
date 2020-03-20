@@ -1,0 +1,112 @@
+/*+++++++++++++++ Multimedia +++++++++++++++++ */ 
+.contenido0{
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+/*+++++++++++++++ Plantilla 1 +++++++++++++++++ */ 
+.contenido1{
+    margin-top: 15%;
+    margin-bottom: 10%;
+}
+.info1{
+    font-size: 1.5em;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media only screen and (max-width: 575.98px) {
+	.contenido1{
+         margin-top: 40%;
+         margin-bottom: 15%;
+    }
+    .info1{
+        font-size: 0.8em;
+        padding-top: 10%;
+    }
+}
+/*Small devices (landscape phones, 576 - 768px)*/
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+    .contenido1{
+        margin-top: 40%;
+        margin-bottom: 15%;
+   }
+}
+/* Medium devices (tablets, 768 - 992px)*/
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    .contenido1{
+        margin-top: 40%;
+        margin-bottom: 15%;
+   }
+}
+/*// Large devices (desktops, 992 - 1200px)*/
+@media only screen and (min-width: 992px) and (max-width: 1199.98px) {  }
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media only screen and (min-width: 1200px) {  }
+
+/*+++++++++++++++ Plantilla 2 +++++++++++++++++ */ 
+.contenido2{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+.info2{
+    font-size: 1.2em;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media only screen and (max-width: 575.98px) {
+	.contenido2{
+         margin-top: 20%;
+         margin-bottom: 10%;
+    }
+    .info2{
+        font-size: 0.8em;        
+    }
+}
+/*Small devices (landscape phones, 576 - 768px)*/
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+    .contenido2{
+        margin-top: 20%;
+        margin-bottom: 10%;
+   }
+}
+/* Medium devices (tablets, 768 - 992px)*/
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    .contenido2{
+        margin-top: 15%;
+        margin-bottom: 10%;
+   }
+}
+
+
+/*+++++++++++++++ Plantilla 3 +++++++++++++++++ */ 
+.contenido3{
+    margin-top: 15%;    
+    margin-bottom: 10%;
+}
+.contenido3 .row{
+    margin-right: 0;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media only screen and (max-width: 575.98px) {
+	.contenido3{
+         margin-top: 40%;
+         margin-bottom: 10%;
+         font-size: 0.8em;
+    }
+    
+}
+/*Small devices (landscape phones, 576 - 768px)*/
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+    .contenido3{
+        margin-top: 30%;
+        margin-bottom: 10%;
+        font-size: 0.8em;
+   }
+}
+/* Medium devices (tablets, 768 - 992px)*/
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    .contenido3{
+        margin-top: 25%;
+        margin-bottom: 10%;
+   }
+}

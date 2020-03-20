@@ -1,0 +1,125 @@
+/*+++++++++++++++ Plantilla 1 +++++++++++++++++ */ 
+.contenido1{
+    margin-top: 15%;
+    margin-bottom: 10%;
+}
+.mytable{
+    width: 100%;
+}
+.mat-header-row{
+    background-color: rgba(6, 17, 27, 0.9);    
+}
+.mat-header-cell{
+    color: rgb(1, 236, 236);
+}
+.mat-row:hover{
+   color: rgba(24, 39, 53, 0.9);  
+   background-color: rgb(1, 236, 236) !important ;
+}
+.mat-cell:hover{
+    color: rgba(24, 39, 53, 0.9);
+}
+.info{
+    font-size: 0.8em;
+    text-align: center;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media only screen and (max-width: 575.98px) {
+	.contenido1{
+         margin-top: 25%;
+         margin-bottom: 25%;
+    }
+    .oculta{
+        display: none;
+    }
+}
+/*Small devices (landscape phones, 576 - 768px)*/
+@media only screen and (min-width: 576px) and (max-width: 767.98px){
+    .contenido1{
+        margin-top: 25%;
+        margin-bottom: 25%;
+   }
+   .oculta{
+    display: none;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width : 991.98px) {
+	.contenido1{
+         margin-top: 20%;
+    }
+}
+
+/*+++++++++++++++ Plantilla 2 +++++++++++++++++ */ 
+.contenido2{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+.subt{
+    font-size: 1.2em;
+    text-align: center;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media only screen and (max-width: 575.98px) {
+	.contenido2{
+        margin-top: 20%;
+        margin-bottom: 10%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+    .info{
+        font-size: 0.7em;
+    }
+    .subt{
+        font-size: 0.9em;
+    }
+}
+/*Small devices (landscape phones, 576 - 768px)*/
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+    .contenido2{
+        margin-top: 20%;
+        margin-bottom: 10%;
+   }
+}
+/* Medium devices (tablets, 768 - 992px)*/
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    .contenido2{
+        margin-top: 15%;
+        margin-bottom: 10%;
+   }
+}
+
+
+/*+++++++++++++++ Plantilla 3 +++++++++++++++++ */ 
+.contenido3{
+    margin-top: 15%;    
+    margin-bottom: 10%;
+}
+.contenido3 .row{
+    margin-right: 0;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media only screen and (max-width: 575.98px) {
+	.contenido3{
+         margin-top: 40%;
+         margin-bottom: 30%;
+         font-size: 0.8em;
+    }
+    
+}
+/*Small devices (landscape phones, 576 - 768px)*/
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+    .contenido3{
+        margin-top: 30%;
+        margin-bottom: 30%;
+        font-size: 0.8em;
+   }
+}
+/* Medium devices (tablets, 768 - 992px)*/
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    .contenido3{
+        margin-top: 25%;
+        margin-bottom: 10%;
+   }
+}

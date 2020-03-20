@@ -1,0 +1,94 @@
+/*+++++++++++++++ Plantilla 1 +++++++++++++++++ */ 
+.contenido1{
+    margin-bottom: 15%;
+    margin-top: 13%;
+}
+.matfield{
+    width: 90%;
+}
+.mat-optgroup{
+    font-size: 0.8em;
+}
+.info{
+    font-size: 0.8em;
+    text-align: center;
+}
+@media only screen and (max-width : 768px) {
+	.contenido1{
+         margin-top: 40%;
+         margin-bottom: 20%;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width : 992px) {
+	.contenido1{
+         margin-top: 20%;
+         margin-bottom: 20%;
+    }
+}
+@media only screen and (max-height : 500px) {
+	.contenido1{
+         margin-bottom: 15%;
+    }
+}
+
+/*+++++++++++++++ Plantilla 2 +++++++++++++++++ */ 
+.contenido2{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media only screen and (max-width: 575.98px) {
+	.contenido2{
+         margin-top: 20%;
+         margin-bottom: 10%;
+    }
+}
+/*Small devices (landscape phones, 576 - 768px)*/
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+    .contenido2{
+        margin-top: 20%;
+        margin-bottom: 10%;
+   }
+}
+/* Medium devices (tablets, 768 - 992px)*/
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    .contenido2{
+        margin-top: 15%;
+        margin-bottom: 10%;
+   }
+}
+
+/*+++++++++++++++ Plantilla 3 +++++++++++++++++ */ 
+.contenido3{
+    margin-top: 15%;    
+    margin-bottom: 10%;
+}
+.contenido3 .row{
+    margin-right: 0;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media only screen and (max-width: 575.98px) {
+	.contenido3{
+         margin-top: 40%;
+         margin-bottom: 10%;
+         font-size: 0.8em;
+    }
+    
+}
+/*Small devices (landscape phones, 576 - 768px)*/
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+    .contenido3{
+        margin-top: 30%;
+        margin-bottom: 10%;
+        font-size: 0.8em;
+   }
+}
+/* Medium devices (tablets, 768 - 992px)*/
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    .contenido3{
+        margin-top: 25%;
+        margin-bottom: 10%;
+   }
+}

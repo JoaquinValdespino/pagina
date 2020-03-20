@@ -1,0 +1,160 @@
+<!--  +++++++++++++++++++  Plantilla 1 ++++++++++++++++++++++++++++++ -->
+<div class="contenido1 container fluid" *ngIf="this.template_select=='first'">
+	<div class="row justify-content-center">
+		<h5>Detalles de la solicitud</h5> <br>			
+	</div> <hr>
+	<div class="row justify-content-center">
+			<div class="col-10 col-sm-10 col-md-6">
+				<mat-form-field class="matfield">
+					<input matInput placeholder="Nombre del elemento a eliminar:" name="name" [(ngModel)]="request.name" readonly disabled>
+				</mat-form-field>
+			</div>
+			<div class="col-10 col-sm-10 col-md-6">
+				<mat-form-field class="matfield">
+					<input matInput placeholder="Subtema al que pertenece:" name="subtopic" [(ngModel)]="request.subtopic" readonly disabled>
+				</mat-form-field>
+			</div>					
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-10 col-sm-10 col-md-6">
+			<mat-form-field class="matfield">
+				<input matInput placeholder="Profesor que lo solicita:" name="prof" [(ngModel)]="request.profesor_name" readonly disabled>
+			</mat-form-field>
+		</div>
+		<div class="col-10 col-sm-10 col-md-6">
+			<mat-form-field class="matfield">
+				<input matInput placeholder="Justificación:" name="justifica" [(ngModel)]="request.justification" readonly disabled>
+			</mat-form-field>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+			<div class="col-10 col-sm-10 col-md-6">
+					<mat-form-field class="matfield">
+						<input matInput placeholder="Estatus actual:" name="status" [(ngModel)]="request.estatus" readonly disabled>
+					</mat-form-field>
+				</div>				
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-10 col-sm-10 col-md-6">
+				<button (click)="aceptar()" class="btn btn-danger btn-sm" *ngIf="request.estatus=='Pendiente'">
+					Aceptar y Eliminar Material
+				</button>
+				<button (click)="rechazar()" class="btn  btn-warning btn-sm" *ngIf="request.estatus=='Pendiente'">
+					Rechazar Solicitud
+				</button>
+				<button   [routerLink]="['/viewrequest']" class="btn btn-info btn-sm" >
+					Regresar a solicitudes
+				</button>
+		</div>
+	</div>
+</div>
+<!--  +++++++++++++++++++ FIN Plantilla 1 ++++++++++++++++++++++++++++++ -->
+
+
+
+
+<!--  +++++++++++++++++++  Plantilla 2 ++++++++++++++++++++++++++++++ -->
+<div class="contenido2" *ngIf="this.template_select=='second'">
+	<div class="row justify-content-center">
+		<h5>Detalles de la solicitud</h5> <br>			
+	</div> <hr>
+	<div class="row justify-content-center">
+			<div class="col-10 col-sm-10 col-md-6">
+				<mat-form-field class="matfield">
+					<input matInput placeholder="Nombre del elemento a eliminar:" name="name" [(ngModel)]="request.name" readonly disabled>
+				</mat-form-field>
+			</div>
+			<div class="col-10 col-sm-10 col-md-6">
+				<mat-form-field class="matfield">
+					<input matInput placeholder="Subtema al que pertenece:" name="subtopic" [(ngModel)]="request.subtopic" readonly disabled>
+				</mat-form-field>
+			</div>					
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-10 col-sm-10 col-md-6">
+			<mat-form-field class="matfield">
+				<input matInput placeholder="Profesor que lo solicita:" name="prof" [(ngModel)]="request.profesor_name" readonly disabled>
+			</mat-form-field>
+		</div>
+		<div class="col-10 col-sm-10 col-md-6">
+			<mat-form-field class="matfield">
+				<input matInput placeholder="Justificación:" name="justifica" [(ngModel)]="request.justification" readonly disabled>
+			</mat-form-field>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+			<div class="col-10 col-sm-10 col-md-6">
+					<mat-form-field class="matfield">
+						<input matInput placeholder="Estatus actual:" name="status" [(ngModel)]="request.estatus" readonly disabled>
+					</mat-form-field>
+				</div>				
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-10 col-sm-10 col-md-6">
+				<button (click)="aceptar()" class="btn btn-danger btn-sm" *ngIf="request.estatus=='Pendiente'">
+					Aceptar y Eliminar Material
+				</button>
+				<button (click)="rechazar()" class="btn  btn-warning btn-sm" *ngIf="request.estatus=='Pendiente'">
+					Rechazar Solicitud
+				</button>
+				<button   [routerLink]="['/viewrequest']" class="btn btn-info btn-sm" >
+					Regresar a solicitudes
+				</button>
+		</div>
+	</div>
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 2 ++++++++++++++++++++++++++++++ -->
+
+
+
+<!--  +++++++++++++++++++  Plantilla 3 ++++++++++++++++++++++++++++++ -->
+<div class="contenido3 container fluid" *ngIf="this.template_select=='third'">
+	<div class="row justify-content-center">
+		<h5>Detalles de la solicitud</h5> <br>			
+	</div> <hr>
+	<div class="row justify-content-center">
+			<div class="col-10 col-sm-10 col-md-6">
+				<mat-form-field class="matfield">
+					<input matInput placeholder="Nombre del elemento a eliminar:" name="name" [(ngModel)]="request.name" readonly disabled>
+				</mat-form-field>
+			</div>
+			<div class="col-10 col-sm-10 col-md-6">
+				<mat-form-field class="matfield">
+					<input matInput placeholder="Subtema al que pertenece:" name="subtopic" [(ngModel)]="request.subtopic" readonly disabled>
+				</mat-form-field>
+			</div>					
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-10 col-sm-10 col-md-6">
+			<mat-form-field class="matfield">
+				<input matInput placeholder="Profesor que lo solicita:" name="prof" [(ngModel)]="request.profesor_name" readonly disabled>
+			</mat-form-field>
+		</div>
+		<div class="col-10 col-sm-10 col-md-6">
+			<mat-form-field class="matfield">
+				<input matInput placeholder="Justificación:" name="justifica" [(ngModel)]="request.justification" readonly disabled>
+			</mat-form-field>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+			<div class="col-10 col-sm-10 col-md-6">
+					<mat-form-field class="matfield">
+						<input matInput placeholder="Estatus actual:" name="status" [(ngModel)]="request.estatus" readonly disabled>
+					</mat-form-field>
+				</div>				
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-10 col-sm-10 col-md-6">
+				<button (click)="aceptar()" class="btn btn-danger btn-sm" *ngIf="request.estatus=='Pendiente'">
+					Aceptar y Eliminar Material
+				</button>
+				<button (click)="rechazar()" class="btn  btn-warning btn-sm" *ngIf="request.estatus=='Pendiente'">
+					Rechazar Solicitud
+				</button>
+				<button   [routerLink]="['/viewrequest']" class="btn btn-info btn-sm" >
+					Regresar a solicitudes
+				</button>
+		</div>
+	</div>
+</div>
+	<!--  +++++++++++++++++++  FIN Plantilla 3 ++++++++++++++++++++++++++++++ -->

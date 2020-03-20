@@ -1,0 +1,92 @@
+/*+++++++++++++++ Plantilla 1 +++++++++++++++++ */ 
+.map{
+    width: 90%;
+}
+.contenido1{
+    padding-bottom: 10%;
+    padding-top: 15%;
+}
+.twitter1{
+    width: 10%;
+    float: left;
+}
+@media only screen and (max-width : 768px) {
+	.contenido1{
+         padding-top: 40%;
+         padding-bottom: 25%;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width : 992px) {
+	.contenido1{
+         padding-top: 20%;
+    }
+}
+@media only screen and (max-height : 500px) {
+	.contenido1{
+         padding-bottom: 15%;
+    }
+}
+/*+++++++++++++++ Plantilla 2 +++++++++++++++++ */ 
+.contenido2{
+    margin-left: 10%;
+    margin-right: 15%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media only screen and (max-width: 575.98px) {
+	.contenido2{
+         margin-top: 20%;
+         margin-bottom: 10%;
+         margin-left: 5%;
+    }
+}
+/*Small devices (landscape phones, 576 - 768px)*/
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+    .contenido2{
+        margin-top: 15%;
+        margin-bottom: 10%;
+   }
+}
+/* Medium devices (tablets, 768 - 992px)*/
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    .contenido2{
+        margin-top: 15%;
+        margin-bottom: 10%;
+   }
+}
+
+/*+++++++++++++++ Plantilla 3 +++++++++++++++++ */ 
+.contenido3{
+    margin-top: 15%;    
+    margin-bottom: 8%;
+    font-size: 0.8em;
+}
+.contenido3 .row{
+    margin-right: 0;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media only screen and (max-width: 575.98px) {
+	.contenido3{
+         margin-top: 40%;
+         margin-bottom: 20%;
+         font-size: 0.7em;
+    }
+    
+}
+/*Small devices (landscape phones, 576 - 768px)*/
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+    .contenido3{
+        margin-top: 30%;
+        margin-bottom: 15%;
+        font-size: 0.8em;
+   }
+}
+/* Medium devices (tablets, 768 - 992px)*/
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    .contenido3{
+        margin-top: 25%;
+        margin-bottom: 10%;
+   }
+}
+

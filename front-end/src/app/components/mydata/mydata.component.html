@@ -1,0 +1,105 @@
+<!--  +++++++++++++++++++  Plantilla 1 ++++++++++++++++++++++++++++++ -->
+<div class="contenido1 container-fluid" *ngIf="this.template_select=='first'">
+	<div class="row justify-content-center">
+		info
+	</div> <hr>
+	<div class="row justify-content-center">
+		<div class="col-10">
+			<div class="row justify-content-center">
+				<mat-form-field class="matfield col-6 col-sm-6 col-md-4 col-lg-3">
+					<input matInput placeholder="Usuario" name="name" [(ngModel)]="identity.name" readonly disabled>
+				</mat-form-field>
+				<mat-form-field class="matfield col-6 col-sm-6 col-md-4 col-lg-3">
+					<input matInput placeholder="Email" name="email" [(ngModel)]="identity.email" readonly disabled>
+				</mat-form-field>
+			</div>	
+			<div class="row justify-content-center">
+				<div class="col-6 col-sm-6 col-md-4">
+						<label class="col-12"> Imagen de Perfil actual</label>
+						<img src="{{url + 'getImage/' +  identity.assignment_name}}" class="profile img-fluid mx-auto d-block col-10">
+				</div>				
+				<div class="col-6 col-sm-6 col-md-4">
+					<form #mydataForm="ngForm" (ngSubmit)="onSubmit(mydataForm)" class="col-8" >
+						<p>
+							<label>Actualizar foto de perfil</label>
+							<input type="file" placeholder="Subir archivo" (change)="fileChangeEvent($event)" />
+						</p>
+						<input type="submit" value="Actualizar" class="btn btn-primary  btn-lg col-12 col-sm-12 col-md-8" [disabled]="!mydataForm.form.valid"/>
+					</form>
+				</div>				
+			</div>			
+		</div>						
+	</div>
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 1 ++++++++++++++++++++++++++++++ -->
+
+<!--  +++++++++++++++++++  Plantilla 2 ++++++++++++++++++++++++++++++ -->
+<div class="contenido2" *ngIf="this.template_select=='second'">
+	<div class="row justify-content-center">
+		info
+	</div> <hr>
+	<div class="row justify-content-center">
+		<div class="col-10">
+			<div class="row justify-content-center">
+				<mat-form-field class="matfield col-6 col-sm-6 col-md-4 col-lg-3">
+					<input matInput placeholder="Usuario" name="name" [(ngModel)]="identity.name" readonly disabled>
+				</mat-form-field>
+				<mat-form-field class="matfield col-6 col-sm-6 col-md-4 col-lg-3">
+					<input matInput placeholder="Email" name="email" [(ngModel)]="identity.email" readonly disabled>
+				</mat-form-field>
+			</div>	
+			<div class="row justify-content-center">
+				<div class="col-10 col-sm-10 col-md-4">
+						<label class="col-12"> Imagen de Perfil actual</label>
+						<img src="{{url + 'getImage/' +  identity.assignment_name}}" class="profile img-fluid mx-auto d-block col-10">
+				</div>				
+				<div class="col-10 col-sm-10 col-md-4">
+					<form #mydataForm="ngForm" (ngSubmit)="onSubmit(mydataForm)" class="col-8" >
+						<p>
+							<label>Actualizar foto de perfil</label>
+							<input type="file" placeholder="Subir archivo" (change)="fileChangeEvent($event)" />
+						</p>
+						<input type="submit" value="Actualizar" class="btn btn-primary  btn-sm col-12" [disabled]="!mydataForm.form.valid"/>
+					</form>
+				</div>				
+			</div>			
+		</div>						
+	</div>
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 2 ++++++++++++++++++++++++++++++ -->
+
+
+<!--  +++++++++++++++++++  Plantilla 3 ++++++++++++++++++++++++++++++ -->
+<div class="contenido3" *ngIf="this.template_select=='third'">
+	<div class="row justify-content-center">
+		info
+	</div> <hr>
+	<div class="row justify-content-center">
+		<div class="col-10">
+			<div class="row justify-content-center">
+				<mat-form-field class="matfield col-6 col-sm-6 col-md-4 col-lg-3">
+					<input matInput placeholder="Usuario" name="name" [(ngModel)]="identity.name" readonly disabled>
+				</mat-form-field>
+				<mat-form-field class="matfield col-6 col-sm-6 col-md-4 col-lg-3">
+					<input matInput placeholder="Email" name="email" [(ngModel)]="identity.email" readonly disabled>
+				</mat-form-field>
+			</div>	
+			<div class="row justify-content-center">
+				<div class="col-6 col-sm-6 col-md-4">
+						<label class="col-12"> Imagen de Perfil actual</label>
+						<img src="{{url + 'getImage/' +  identity.assignment_name}}" class="profile img-fluid mx-auto d-block col-10">
+				</div>				
+				<div class="col-6 col-sm-6 col-md-4">
+					<form #mydataForm="ngForm" (ngSubmit)="onSubmit(mydataForm)" class="col-8" >
+						<p>
+							<label>Actualizar foto de perfil</label>
+							<input type="file" placeholder="Subir archivo" (change)="fileChangeEvent($event)" />
+						</p>
+						<input type="submit" value="Actualizar" class="btn btn-primary  btn-sm col-12" [disabled]="!mydataForm.form.valid"/>
+					</form>
+				</div>				
+			</div>			
+		</div>						
+	</div>
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 3 ++++++++++++++++++++++++++++++ -->

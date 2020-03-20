@@ -1,0 +1,332 @@
+<!--  +++++++++++++++++++   Plantilla 1 ++++++++++++++++++++++++++++++ -->
+<div class="contenido1 container-fluid" *ngIf="this.template_select=='first'">
+    <div class="row justify-content-center">
+        <i class="info" >Selecciona una sección para poder editar sus estilos. <br>
+            Al finalizar da clic en Acutalizar para guardar tus cambios.</i>
+    </div> <hr>
+    <div class="row justify-content-center">
+        <form #updateForm="ngForm" (ngSubmit)="onSubmit()" class="col-12 col-sm-12 col-md-10 col-lg-10">
+            <mat-accordion >
+                <mat-expansion-panel [ngStyle]='tempCollapse'>
+                    <mat-expansion-panel-header class="title">
+                        <mat-panel-title [ngStyle]='tempCollapse'>
+                            Estilos del Contenido
+                        </mat-panel-title>
+                        <mat-panel-description [ngStyle]='tempCollapse'>
+                            Edita los estilos del cuerpo del sitio
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="row jutify-content-center">                                
+                        <mat-form-field class="matfield col-6 col-sm-6 col-md-3">
+                            <input matInput type="color" placeholder="Color de fondo" name="bodyy" [(ngModel)]="newTemplate.style_body.backgroundColor" >
+                        </mat-form-field>
+                        <mat-form-field class="matfield col-6 col-sm-6 col-md-3">
+                            <input matInput type="color" placeholder="Color de la fuente" name="letrabody" [(ngModel)]="newTemplate.style_body.color">
+                        </mat-form-field>
+                        <mat-radio-group  name="letra2" [(ngModel)]="newTemplate.style_body.fontFamily" class="matfield col-8 col-sm-8 col-md-6">
+                            <label class="placehol">Tipo de fuente</label> <br>
+                            <mat-radio-button value="Montserrat" [ngStyle]='mont'>Montserrat</mat-radio-button>
+                            <mat-radio-button value="Concert One" [ngStyle]='con'>Concert One</mat-radio-button> 
+                            <mat-radio-button value="Josefin Sans" [ngStyle]='jos'>Josefin Sans</mat-radio-button> <br>
+                            <mat-radio-button value="Roboto Mono" [ngStyle]='rob'>Roboto Mono</mat-radio-button> 
+                            <mat-radio-button value="Architects Daughter" [ngStyle]='arc'>Architects Daughter</mat-radio-button>
+                            <mat-radio-button value="Ubuntu" [ngStyle]='ubun'>Ubuntu</mat-radio-button>                   
+                        </mat-radio-group>                      
+                    </div>                          
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [ngStyle]='tempCollapse'>
+                    <mat-expansion-panel-header class="title">
+                        <mat-panel-title [ngStyle]='tempCollapse'>
+                            Estilos del Menu
+                        </mat-panel-title>
+                        <mat-panel-description [ngStyle]='tempCollapse'>
+                            Edita los estilos del Menu 
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="row jutify-content-center">                            
+                        <mat-form-field class="matfield col-6 col-sm-6 col-md-3">
+                            <input matInput type="color" placeholder="Color de fondo" name="menu" [(ngModel)]="newTemplate.style_menu.backgroundColor" >
+                        </mat-form-field>
+                        <mat-form-field class="matfield col-6 col-sm-6 col-md-3">
+                            <input matInput type="color" placeholder="Color de la fuente" name="letramenu" [(ngModel)]="newTemplate.style_menu.color">
+                        </mat-form-field>        
+                        <mat-radio-group name="letra" [(ngModel)]="newTemplate.style_menu.fontFamily" class="matfield col-8 col-sm-8 col-md-6">
+                            <label class="placehol">Tipo de fuente</label> <br>
+                            <mat-radio-button  value="Montserrat" [ngStyle]='mont'>Montserrat</mat-radio-button>
+                            <mat-radio-button value="Concert One" [ngStyle]='con'>Concert One</mat-radio-button> 
+                            <mat-radio-button value="Josefin Sans" [ngStyle]='jos'>Josefin Sans</mat-radio-button>
+                            <mat-radio-button value="Roboto Mono" [ngStyle]='rob'>Roboto Mono</mat-radio-button> 
+                            <mat-radio-button value="Architects Daughter" [ngStyle]='arc'>Architects Daughter</mat-radio-button>
+                            <mat-radio-button value="Ubuntu" [ngStyle]='ubun'>Ubuntu</mat-radio-button>                     
+                        </mat-radio-group>         
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [ngStyle]='tempCollapse'>
+                    <mat-expansion-panel-header class="title" >
+                        <mat-panel-title [ngStyle]='tempCollapse'>
+                            Logos e imagen de la Asignatura
+                        </mat-panel-title>
+                        <mat-panel-description [ngStyle]='tempCollapse'>
+                            Selecciona los logos e imagen de fondo
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="row jutify-content-center">                                
+                        <mat-radio-group name="unam" [(ngModel)]="logos.unam" class="matfield col-6 col-sm-6 col-md-2">
+                            <label class="placehol">UNAM</label> <br>
+                            <mat-radio-button  value="unam1.png"><img src="{{url + 'getsImage/' +  'unam1.png'}}" class="ima "></mat-radio-button>
+                            <mat-radio-button value="unam2.png"><img src="{{url + 'getsImage/' +  'unam2.png'}}" class="ima "></mat-radio-button>
+                            <mat-radio-button value="unam3.png"><img src="{{url + 'getsImage/' +  'unam3.png'}}" class="ima "></mat-radio-button>                
+                        </mat-radio-group>   
+                        <mat-radio-group name="fi" [(ngModel)]="logos.fi" class="matfield col-6 col-sm-6 col-md-2">
+                            <label class="placehol">Facultad de Ingeniería</label> <br>
+                            <mat-radio-button  value="fi3.png"><img src="{{url + 'getsImage/' +  'fi3.png'}}" class="ima "></mat-radio-button>
+                            <mat-radio-button value="fi2.png"><img src="{{url + 'getsImage/' +  'fi2.png'}}" class="ima "></mat-radio-button>
+                            <mat-radio-button value="fi1.png"><img src="{{url + 'getsImage/' +  'fi1.png'}}" class="ima "></mat-radio-button>                
+                        </mat-radio-group>   
+                        <mat-radio-group name="image_assig" [(ngModel)]="logos.assig" class="matfield col-10 col-sm-10 col-md-8">
+                            <label class="placehol">Imagen de Fondo</label> <br>
+                            <mat-radio-button value="pi3.jpg"><img src="{{url + 'getsImage/' +  'pi3.jpg'}}" class="ima_fondo"></mat-radio-button>
+                            <mat-radio-button value="mat1.jpg"><img src="{{url + 'getsImage/' +  'mat1.jpg'}}" class="ima_fondo"></mat-radio-button>
+                            <mat-radio-button value="mat5.jpg"><img src="{{url + 'getsImage/' +  'mat5.jpg'}}" class="ima_fondo"></mat-radio-button>                
+                            <mat-radio-button value="mat6.jpg"><img src="{{url + 'getsImage/' +  'mat6.jpg'}}" class="ima_fondo"></mat-radio-button>
+                        </mat-radio-group> 
+                    </div>
+                </mat-expansion-panel>
+
+            </mat-accordion>      
+            <div class="row justify-content-center">
+                <input type="submit" value="Actualizar" class="btn btn-primary col-6 col-sm-6 col-md-4" />
+            </div>                            
+            
+        </form>
+    </div>
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 1 ++++++++++++++++++++++++++++++ -->
+
+
+
+
+<!--  +++++++++++++++++++  Plantilla 2 ++++++++++++++++++++++++++++++ -->
+<div class="contenido2" *ngIf="this.template_select=='second'">
+    <div class="row justify-content-center">
+        <i class="info" >Selecciona una sección para poder editar sus estilos. <br>
+            Al finalizar da clic en Acutalizar para guardar tus cambios.</i>
+    </div> <hr>
+    <div class="row justify-content-center">
+        <form #updateForm="ngForm" (ngSubmit)="onSubmit()" class="col-12 col-sm-12 col-md-10 col-lg-10">
+            <mat-accordion >
+                <mat-expansion-panel [ngStyle]='tempCollapse'>
+                    <mat-expansion-panel-header  class="title" >
+                        <mat-panel-title [ngStyle]='tempCollapse'>
+                            Estilos del Contenido
+                        </mat-panel-title>
+                        <mat-panel-description [ngStyle]='tempCollapse'>
+                            Edita los estilos del cuerpo del sitio
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="row jutify-content-center">                                
+                        <mat-form-field class="matfield col-6 col-sm-6 col-md-3">
+                            <input matInput type="color" placeholder="Color de fondo" name="bodyy" [(ngModel)]="newTemplate.style_body.backgroundColor" >
+                        </mat-form-field>
+                        <mat-form-field class="matfield col-6 col-sm-6 col-md-3">
+                            <input matInput type="color" placeholder="Color de la fuente" name="letrabody" [(ngModel)]="newTemplate.style_body.color">
+                        </mat-form-field>
+                        <mat-radio-group  name="letra2" [(ngModel)]="newTemplate.style_body.fontFamily" class="matfield col-8 col-sm-8 col-md-6">
+                            <label class="placehol">Tipo de fuente</label> <br>
+                            <mat-radio-button value="Montserrat" [ngStyle]='mont'>Montserrat</mat-radio-button>
+                            <mat-radio-button value="Concert One" [ngStyle]='con'>Concert One</mat-radio-button> 
+                            <mat-radio-button value="Josefin Sans" [ngStyle]='jos'>Josefin Sans</mat-radio-button> <br>
+                            <mat-radio-button value="Roboto Mono" [ngStyle]='rob'>Roboto Mono</mat-radio-button> 
+                            <mat-radio-button value="Architects Daughter" [ngStyle]='arc'>Architects Daughter</mat-radio-button>
+                            <mat-radio-button value="Ubuntu" [ngStyle]='ubun'>Ubuntu</mat-radio-button>                   
+                        </mat-radio-group>                      
+                    </div>                          
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [ngStyle]='tempCollapse'>
+                    <mat-expansion-panel-header class="title" >
+                        <mat-panel-title [ngStyle]='tempCollapse'>
+                            Estilos del Menu
+                        </mat-panel-title>
+                        <mat-panel-description [ngStyle]='tempCollapse'>
+                            Edita los estilos del Menu 
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="row jutify-content-center">                            
+                        <mat-form-field class="matfield col-6 col-sm-6 col-md-3">
+                            <input matInput type="color" placeholder="Color de fondo" name="menu" [(ngModel)]="newTemplate.style_menu.backgroundColor" >
+                        </mat-form-field>
+                        <mat-form-field class="matfield col-6 col-sm-6 col-md-3">
+                            <input matInput type="color" placeholder="Color de la fuente" name="letramenu" [(ngModel)]="newTemplate.style_menu.color">
+                        </mat-form-field>        
+                        <mat-radio-group name="letra" [(ngModel)]="newTemplate.style_menu.fontFamily" class="matfield col-8 col-sm-8 col-md-6">
+                            <label class="placehol">Tipo de fuente</label> <br>
+                            <mat-radio-button  value="Montserrat" [ngStyle]='mont'>Montserrat</mat-radio-button>
+                            <mat-radio-button value="Concert One" [ngStyle]='con'>Concert One</mat-radio-button> 
+                            <mat-radio-button value="Josefin Sans" [ngStyle]='jos'>Josefin Sans</mat-radio-button>
+                            <mat-radio-button value="Roboto Mono" [ngStyle]='rob'>Roboto Mono</mat-radio-button> 
+                            <mat-radio-button value="Architects Daughter" [ngStyle]='arc'>Architects Daughter</mat-radio-button>
+                            <mat-radio-button value="Ubuntu" [ngStyle]='ubun'>Ubuntu</mat-radio-button>                     
+                        </mat-radio-group>         
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel  [ngStyle]='tempCollapse'>
+                    <mat-expansion-panel-header class="title">
+                        <mat-panel-title [ngStyle]='tempCollapse'>
+                            Logos e imagen de la Asignatura
+                        </mat-panel-title>
+                        <mat-panel-description [ngStyle]='tempCollapse'>
+                            Selecciona los logos e imagen de fondo
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="row jutify-content-center">                                
+                        <mat-radio-group name="unam" [(ngModel)]="logos.unam" class="matfield col-6 col-sm-6 col-md-2">
+                            <label class="placehol">UNAM</label> <br>
+                            <mat-radio-button  value="unam1.png"><img src="{{url + 'getsImage/' +  'unam1.png'}}" class="ima "></mat-radio-button>
+                            <mat-radio-button value="unam2.png"><img src="{{url + 'getsImage/' +  'unam2.png'}}" class="ima "></mat-radio-button>
+                            <mat-radio-button value="unam3.png"><img src="{{url + 'getsImage/' +  'unam3.png'}}" class="ima "></mat-radio-button>                
+                        </mat-radio-group>   
+                        <mat-radio-group name="fi" [(ngModel)]="logos.fi" class="matfield col-6 col-sm-6 col-md-2">
+                            <label class="placehol">Facultad de Ingeniería</label> <br>
+                            <mat-radio-button  value="fi3.png"><img src="{{url + 'getsImage/' +  'fi3.png'}}" class="ima "></mat-radio-button>
+                            <mat-radio-button value="fi2.png"><img src="{{url + 'getsImage/' +  'fi2.png'}}" class="ima "></mat-radio-button>
+                            <mat-radio-button value="fi1.png"><img src="{{url + 'getsImage/' +  'fi1.png'}}" class="ima "></mat-radio-button>                
+                        </mat-radio-group>   
+                        <mat-radio-group name="image_assig" [(ngModel)]="logos.assig" class="matfield col-10 col-sm-10 col-md-8">
+                            <label class="placehol">Imagen de Fondo</label> <br>
+                            <mat-radio-button value="pi3.jpg"><img src="{{url + 'getsImage/' +  'pi3.jpg'}}" class="ima_fondo"></mat-radio-button>
+                            <mat-radio-button value="mat1.jpg"><img src="{{url + 'getsImage/' +  'mat1.jpg'}}" class="ima_fondo"></mat-radio-button>
+                            <mat-radio-button value="mat5.jpg"><img src="{{url + 'getsImage/' +  'mat5.jpg'}}" class="ima_fondo"></mat-radio-button>                
+                            <mat-radio-button value="mat6.jpg"><img src="{{url + 'getsImage/' +  'mat6.jpg'}}" class="ima_fondo"></mat-radio-button>
+                        </mat-radio-group> 
+                    </div>
+                </mat-expansion-panel>
+
+            </mat-accordion>      
+            <div class="row justify-content-center">
+                <input type="submit" value="Actualizar" class="btn btn-primary col-6 col-sm-6 col-md-4" />
+            </div>                            
+            
+        </form>
+    </div>
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 2 ++++++++++++++++++++++++++++++ -->
+
+
+
+
+
+
+
+
+<!--  +++++++++++++++++++  Plantilla 3 ++++++++++++++++++++++++++++++ -->
+<div class="col-lg-12 contenido3" *ngIf="this.template_select=='third'">
+    <div class="row justify-content-center">
+        <i class="info" >Selecciona una sección para poder editar sus estilos. <br>
+            Al finalizar da clic en Acutalizar para guardar tus cambios.</i>
+    </div> <hr>
+    <div class="row justify-content-center">
+        <form #updateForm="ngForm" (ngSubmit)="onSubmit()" class="col-12 col-sm-12 col-md-10 col-lg-10">
+            <mat-accordion >
+                <mat-expansion-panel [ngStyle]='tempCollapse'>
+                    <mat-expansion-panel-header class="title">
+                        <mat-panel-title [ngStyle]='tempCollapse'>
+                            Estilos del Contenido
+                        </mat-panel-title>
+                        <mat-panel-description [ngStyle]='tempCollapse'>
+                            Edita los estilos del cuerpo del sitio
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="row jutify-content-center">                                
+                        <mat-form-field class="matfield col-6 col-sm-6 col-md-3">
+                            <input matInput type="color" placeholder="Color de fondo" name="bodyy" [(ngModel)]="newTemplate.style_body.backgroundColor" >
+                        </mat-form-field>
+                        <mat-form-field class="matfield col-6 col-sm-6 col-md-3">
+                            <input matInput type="color" placeholder="Color de la fuente" name="letrabody" [(ngModel)]="newTemplate.style_body.color">
+                        </mat-form-field>
+                        <mat-radio-group  name="letra2" [(ngModel)]="newTemplate.style_body.fontFamily" class="matfield col-8 col-sm-8 col-md-6">
+                            <label class="placehol">Tipo de fuente</label> <br>
+                            <mat-radio-button value="Montserrat" [ngStyle]='mont'>Montserrat</mat-radio-button>
+                            <mat-radio-button value="Concert One" [ngStyle]='con'>Concert One</mat-radio-button> 
+                            <mat-radio-button value="Josefin Sans" [ngStyle]='jos'>Josefin Sans</mat-radio-button> <br>
+                            <mat-radio-button value="Roboto Mono" [ngStyle]='rob'>Roboto Mono</mat-radio-button> 
+                            <mat-radio-button value="Architects Daughter" [ngStyle]='arc'>Architects Daughter</mat-radio-button>
+                            <mat-radio-button value="Ubuntu" [ngStyle]='ubun'>Ubuntu</mat-radio-button>                   
+                        </mat-radio-group>                      
+                    </div>                          
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [ngStyle]='tempCollapse'>
+                    <mat-expansion-panel-header class="title">
+                        <mat-panel-title [ngStyle]='tempCollapse'>
+                            Estilos del Menu
+                        </mat-panel-title>
+                        <mat-panel-description [ngStyle]='tempCollapse'>
+                            Edita los estilos del Menu 
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="row jutify-content-center">                            
+                        <mat-form-field class="matfield col-6 col-sm-6 col-md-3">
+                            <input matInput type="color" placeholder="Color de fondo" name="menu" [(ngModel)]="newTemplate.style_menu.backgroundColor" >
+                        </mat-form-field>
+                        <mat-form-field class="matfield col-6 col-sm-6 col-md-3">
+                            <input matInput type="color" placeholder="Color de la fuente" name="letramenu" [(ngModel)]="newTemplate.style_menu.color">
+                        </mat-form-field>        
+                        <mat-radio-group name="letra" [(ngModel)]="newTemplate.style_menu.fontFamily" class="matfield col-8 col-sm-8 col-md-6">
+                            <label class="placehol">Tipo de fuente</label> <br>
+                            <mat-radio-button  value="Montserrat" [ngStyle]='mont'>Montserrat</mat-radio-button>
+                            <mat-radio-button value="Concert One" [ngStyle]='con'>Concert One</mat-radio-button> 
+                            <mat-radio-button value="Josefin Sans" [ngStyle]='jos'>Josefin Sans</mat-radio-button>
+                            <mat-radio-button value="Roboto Mono" [ngStyle]='rob'>Roboto Mono</mat-radio-button> 
+                            <mat-radio-button value="Architects Daughter" [ngStyle]='arc'>Architects Daughter</mat-radio-button>
+                            <mat-radio-button value="Ubuntu" [ngStyle]='ubun'>Ubuntu</mat-radio-button>                     
+                        </mat-radio-group>         
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [ngStyle]='tempCollapse'>
+                    <mat-expansion-panel-header class="title" >
+                        <mat-panel-title [ngStyle]='tempCollapse'>
+                            Logos e imagen de la Asignatura
+                        </mat-panel-title>
+                        <mat-panel-description [ngStyle]='tempCollapse'>
+                            Selecciona los logos e imagen de fondo
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="row jutify-content-center">                                
+                        <mat-radio-group name="unam" [(ngModel)]="logos.unam" class="matfield col-6 col-sm-6 col-md-2">
+                            <label class="placehol">UNAM</label> <br>
+                            <mat-radio-button  value="unam1.png"><img src="{{url + 'getsImage/' +  'unam1.png'}}" class="ima "></mat-radio-button>
+                            <mat-radio-button value="unam2.png"><img src="{{url + 'getsImage/' +  'unam2.png'}}" class="ima "></mat-radio-button>
+                            <mat-radio-button value="unam3.png"><img src="{{url + 'getsImage/' +  'unam3.png'}}" class="ima "></mat-radio-button>                
+                        </mat-radio-group>   
+                        <mat-radio-group name="fi" [(ngModel)]="logos.fi" class="matfield col-6 col-sm-6 col-md-2">
+                            <label class="placehol">Facultad de Ingeniería</label> <br>
+                            <mat-radio-button  value="fi3.png"><img src="{{url + 'getsImage/' +  'fi3.png'}}" class="ima "></mat-radio-button>
+                            <mat-radio-button value="fi2.png"><img src="{{url + 'getsImage/' +  'fi2.png'}}" class="ima "></mat-radio-button>
+                            <mat-radio-button value="fi1.png"><img src="{{url + 'getsImage/' +  'fi1.png'}}" class="ima "></mat-radio-button>                
+                        </mat-radio-group>   
+                        <mat-radio-group name="image_assig" [(ngModel)]="logos.assig" class="matfield col-10 col-sm-10 col-md-8">
+                            <label class="placehol">Imagen de Fondo</label> <br>
+                            <mat-radio-button value="pi3.jpg"><img src="{{url + 'getsImage/' +  'pi3.jpg'}}" class="ima_fondo"></mat-radio-button>
+                            <mat-radio-button value="mat1.jpg"><img src="{{url + 'getsImage/' +  'mat1.jpg'}}" class="ima_fondo"></mat-radio-button>
+                            <mat-radio-button value="mat5.jpg"><img src="{{url + 'getsImage/' +  'mat5.jpg'}}" class="ima_fondo"></mat-radio-button>                
+                            <mat-radio-button value="mat6.jpg"><img src="{{url + 'getsImage/' +  'mat6.jpg'}}" class="ima_fondo"></mat-radio-button>
+                        </mat-radio-group> 
+                    </div>
+                </mat-expansion-panel>
+
+            </mat-accordion>      
+            <div class="row justify-content-center">
+                <input type="submit" value="Actualizar" class="btn btn-primary col-6 col-sm-6 col-md-4" />
+            </div>                            
+            
+        </form>
+    </div>
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 3 ++++++++++++++++++++++++++++++ -->
+    
+    

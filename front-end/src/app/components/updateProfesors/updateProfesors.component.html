@@ -1,0 +1,109 @@
+<div class="contenido0 container-fluid" *ngIf="identity && identity.role=='ROLE_ADMIN'">
+	<div class="row justify-content-center">
+		<i class="info">Selecciona una asignatura para poder ver la lista de profesores. </i>
+	</div> <hr class="col-10">
+	<div class="row justify-content-center">
+		<div class="col-12 col-md-10">
+			<div class="row justify-content-center">
+				<!-- Lista de assignaturas -->
+				<label class="col-10 labelcenter">Selecciona una asignatura para ver/agregar profesores</label>
+				<form class="col-10 col-md-6 col-lg-4">
+					<mat-form-field class="inputMulti">
+						<input class="" type="text" class="" placeholder="Selecciona asignatura" 
+						matInput [formControl]="myControl" [matAutocomplete]="auto">				
+						<mat-icon matSuffix >keyboard_arrow_down</mat-icon>							
+						<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+							<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+							{{option.assignment_name}}
+							</mat-option>
+						</mat-autocomplete>
+					</mat-form-field>						
+				</form>		
+			</div>
+			<div class="row justify-content-center">
+				
+					<button type="button" (click)="ver()" class="btn btn-primary btn-sm" *ngIf="myControl.value!=null">Ver Profesores</button>
+					<button type="button" (click)="add()" class="btn btn-success btn-sm" *ngIf="option=='ver' && profesors">Agregar Profesor</button>
+				
+			</div> <hr class="col-10">
+			<div class="row justify-content-center" *ngIf="option=='ver' && myControl.value!=null">
+				
+				<!--LISTA DE PROFESORES-->
+				<mat-form-field class="col-8 col-sm-6 col-md-5">
+					<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+				</mat-form-field>
+						
+				<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mytable col-12 col-md-10 col-lg-8">					
+					<!-- Nombre Column -->
+					<ng-container matColumnDef="Nombre" > <!--Hace referencia al arrglo displayedColumns-->
+						<th mat-header-cell *matHeaderCellDef> Nombre </th>
+						<td mat-cell *matCellDef="let element" class=""> 
+							{{element.profesor_name}} {{element.profesor_first_last_name}} {{element.profesor_second_last_name}}
+						</td> <!--despues del punto se refiere al arreglo-->
+					</ng-container>
+					
+					<ng-container matColumnDef="Correo">
+						<th mat-header-cell *matHeaderCellDef > Correo </th>
+						<td mat-cell *matCellDef="let element" > <i class="oculta"> {{element.email }} </i>											
+					</ng-container>							
+
+					<ng-container matColumnDef="RFC">
+						<th mat-header-cell *matHeaderCellDef > RFC </th>
+						<td mat-cell *matCellDef="let element" > {{element.rfc}} </td>
+					</ng-container>
+
+					<ng-container matColumnDef="Acciones" >
+						<th mat-header-cell *matHeaderCellDef > Acciones </th>
+						<td mat-cell *matCellDef="let element" > 
+							<div>								
+								<button type="button" (click)="eliminar(element)" class="labelcenter btn btn-danger btn-sm"
+								data-toggle="tooltip" data-placement="left" title="Eliminar" >
+									<i class="material-icons myicons">delete</i>									
+								</button>
+							</div>
+							
+						</td>
+					</ng-container>											
+					
+					<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+					<tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+				</table>
+				<mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons class="col-12 col-md-10 col-lg-8"></mat-paginator>
+			</div>
+			
+			<div class="row justify-content-center" *ngIf="option=='add' && myControl.value!=null" >
+					<!--Formulario para agregar profesor-->
+					<form #registerForm="ngForm" (ngSubmit)="onSubmit();" class="col-12 col-md-10" >
+						<div class="row justify-content-center">
+							<mat-form-field class="matfield col-10 col-md-6 col-lg-4">
+								<input matInput placeholder="Nombre(s)" name="prof_name" [(ngModel)]="newProf.profesor_name" required>								
+							</mat-form-field>
+							<mat-form-field class="matfield col-10 col-md-6 col-lg-4">
+								<input matInput placeholder="Apellido paterno" name="prof_f_last" [(ngModel)]="newProf.profesor_first_last_name" required>								
+							</mat-form-field>
+							<mat-form-field class="matfield col-10 col-md-6 col-lg-4">
+								<input matInput placeholder="Apellido materno" name="prof_s_last" [(ngModel)]="newProf.profesor_second_last_name" required>								
+							</mat-form-field>
+						</div>
+						<div class="row justify-content-center">
+							<mat-form-field class="matfield col-10 col-md-6 col-lg-4">
+								<input matInput placeholder="RFC" name="rfc" [(ngModel)]="newProf.rfc" required>								
+							</mat-form-field>
+							<mat-form-field class="matfield col-10 col-md-6 col-lg-4">
+								<input matInput placeholder="Correo electrónico" name="email" [(ngModel)]="newProf.email" required>								
+							</mat-form-field>
+						</div>						
+						<div class="row justify-content-center">				
+							<input type="submit" value="Registrar" class="btn btn-primary btn-sm col-6" [disabled]="!registerForm.form.valid"/>
+						</div>
+					
+					
+					</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--
+	
+-->

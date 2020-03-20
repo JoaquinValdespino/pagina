@@ -1,0 +1,56 @@
+<!--  +++++++++++++++++++  USUARIO MULTIMEDIA  ++++++++++++++++++++++++++++++ -->
+<div class="contenido0 container-fluid"  *ngIf="!this.template_select && this.title=='inicioMulti'">
+	<div class="row justify-content-center">
+		<div class="col-10 col-sm-10 col-md-4">
+			<p>Bienvenido Multimedia </p>
+			<hr>
+		</div>
+	</div>
+		
+</div>
+<!--  +++++++++++++++++++  FIN Multimedia ++++++++++++++++++++++++++++++ -->
+
+<!--  +++++++++++++++++++   Plantilla 1 ++++++++++++++++++++++++++++++ -->
+<div class="contenido1 container-fluid" *ngIf="this.template_select=='first'">
+	<div class="row justify-content-center">
+		<div class="info1 col-10 col-sm-10 col-md-8 col-lg-6">
+			<p>Asignatura : {{assignment_name}}</p>
+			<hr>
+			<p>Clave:  {{clave_assignment}} </p>  <hr>
+			<p>Profesores participantes: </p>   
+			<ng-container *ngFor="let profesor of profesors">
+				<ul>{{profesor.profesor_name}}  {{profesor.profesor_first_last_name}} {{profesor.profesor_second_last_name}} </ul>
+			</ng-container>
+		</div>	
+	</div>	
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 1 ++++++++++++++++++++++++++++++ -->
+
+<!--  +++++++++++++++++++   Plantilla 2 ++++++++++++++++++++++++++++++ -->
+<div class="contenido2" *ngIf="this.template_select=='second'">
+	<div class="row justify-content-center">
+		<div class="info2 col-10 col-sm-10 col-md-8 col-lg-6">
+			<p>Asignatura : {{assignment_name}}</p>
+			<hr>
+			<p>Clave:  {{clave_assignment}} </p>  <hr>
+			<p>Profesores participantes: </p>   
+			<ng-container *ngFor="let profesor of profesors">
+				<ul>{{profesor.profesor_name}}  {{profesor.profesor_first_last_name}} {{profesor.profesor_second_last_name}} </ul>
+			</ng-container>
+		</div>	
+	</div>
+</div>
+<!--  +++++++++++++++++++   Plantilla 3 ++++++++++++++++++++++++++++++ -->
+<div class="contenido3" *ngIf="this.template_select=='third'">
+	<div class="row justify-content-center">
+		<div class="col-10 col-sm-10 col-md-8 col-lg-6">
+			<p>Asignatura : {{assignment_name}}</p>
+			<hr>
+			<p>Clave:  {{clave_assignment}} </p>  <hr>
+			<p>Profesores participantes: </p>   
+			<ng-container *ngFor="let profesor of profesors">
+				<ul>{{profesor.profesor_name}}  {{profesor.profesor_first_last_name}} {{profesor.profesor_second_last_name}} </ul>
+			</ng-container>
+		</div>	
+	</div>
+</div>

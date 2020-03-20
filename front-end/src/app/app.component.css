@@ -1,0 +1,553 @@
+/* ++++++++++ Estilos NO LOGIN NO ASSIG +++++++++++ */
+.mymenu0{
+	opacity: 0.9;
+	margin-bottom: 5%;
+}
+.footer0{
+	opacity: 0.9;
+	padding-bottom: 0.5%;
+	text-align:center;
+	line-height: 105%;
+}
+.router{
+	padding-bottom: 3%;
+}
+.copyr0{
+	color: aliceblue;	
+	font-size: 0.8em;	
+}
+.facebook0, .twitter0, .multi0{
+	background-size: 70% 80%;
+	background-position:center;
+	background-repeat: no-repeat;
+}
+.facebook0{
+	width: 35%;
+}
+.multi0{
+	width: 75%;
+}
+.twitter0{
+	width: 40%;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px)  { 
+	.facebook0{
+		width: 70%;
+	}
+	.multi0{
+		width: 100%;
+	}
+	.twitter0{
+		width: 70%;
+	}
+}
+/*Small devices (landscape phones, less than 768px)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+	.facebook0{
+		width: 60%;
+	}
+	.multi0{
+		width: 90%;
+	}
+	.twitter0{
+		width: 65%;
+	}
+	.copyr0{
+		font-size: 0.9em;
+	}
+ }
+/* Medium devices (tablets, less than 992px)*/
+@media (min-width: 768px) and (max-width: 991.98px) { 
+	.facebook0{
+		width: 60%;
+	}
+	.multi0{
+		width: 90%;
+	}
+	.twitter0{
+		width: 65%;
+	}
+ }
+/*// Large devices (desktops, less than 1200px)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {  }
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+	.facebook0{
+		width: 90%;
+	}
+	.multi0{
+		width: 50%;
+	}
+	.twitter0{
+		width: 95%;
+	}
+ }
+/* ++++++++++ Multimedia +++++++++++ */
+.dropmulti{
+	background-color: #080707e6;
+}
+.dropItemmulti:hover{
+	background-color: #1e424de6;
+}
+/* ++++++++++ Estilos plantilla 1 +++++++++++ */
+.myheader{
+	border-bottom:  .4em solid;
+	opacity: 0.9;
+}
+.loghead1{
+	width: 30%;	
+}
+.mynav1{
+	margin-right: 8%;
+}
+.assig{
+	text-align: center;
+	font-size: 2em;
+	height: 2.5em;	
+}
+.assig_name{
+	line-height : 3em;
+	margin-top: 0%;
+	font-weight: bold;
+	display: block;
+}
+.mynavbar1{
+	padding: 0rem 0rem;
+	font-size: 0.9rem;
+}
+.mydropdown1{
+	font-size: 0.8rem;
+}
+.myicons{
+	font-size: 1.1rem;
+}
+.footer1{
+	padding-bottom: 0.5%;
+	text-align:center;
+	line-height: 105%;
+}
+.copyr1{
+	font-size: 0.8em;
+}
+.redes1 > div , .redes2 > div
+{
+	opacity: 0.5;
+}
+
+.redes1 > div:hover , .redes2 > div:hover
+{
+	opacity: 1;
+}
+.facebook1, .twitter1, .multi1{
+	background-size: 70% 80%;
+	background-position:center;
+	background-repeat: no-repeat;
+}
+.facebook1{
+	width: 45%;
+}
+.multi1{
+	width: 90%;
+}
+.twitter1{
+	width: 55%;
+}
+.profile
+{
+	width: 4em;
+	margin-top: 15% !important;
+	border-radius: 20%;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px)  {
+	.loghead1 {
+		width: 100%;	
+	} 
+	.facebook1{
+		width: 70%;
+	}
+	.multi1{
+		width: 100%;
+	}
+	.twitter1{
+		width: 80%;
+	}
+	.assig_name{
+		line-height: 2em;
+	}
+	.assig{
+		font-size: 1em;			
+	}
+}
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+	.loghead1 {
+		width: 70%;	
+	}
+	.assig{
+		font-size: 1.2em;			
+	}
+	.facebook1{
+		width: 70%;
+	}
+	.multi1{
+		width: 100%;
+	}
+	.twitter1{
+		width: 90%;
+	}
+}
+/* Medium devices (tablets, less than 992px)*/
+@media only screen and  (min-width: 768px) and (max-width: 991.98px) {
+	.loghead1 {
+		width: 40%;	
+	}
+	.facebook1{
+		width: 40%;
+	}
+	.multi1{
+		width: 65%;
+		background-size: 90% 90%;
+	}
+	.twitter1{
+		width: 50%;
+	}
+	.assig{
+		font-size: 1.3em;			
+	}
+}
+/* Large devices (desktops)*/
+@media only screen and (min-width : 992px) and  (max-width : 1200px) {
+	.facebook1{
+		width: 50%;
+	}
+	.multi1{
+		width: 85%;
+		background-size: 90% 90%;
+	}
+	.twitter1{
+		width: 60%;
+	}
+}
+
+/* ++++++++++ Estilos plantilla 2 +++++++++++ */
+.contenedor {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}  
+.header2{
+	border-bottom-right-radius: 50%;
+	border-bottom-left-radius: 50%;
+	opacity: 0.9;
+}
+.leftnav {
+	overflow: auto;
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	font-size: 0.8rem;
+	/*	display: inline-block;*/	
+	width: 5%;
+	transition: width .7s;
+}
+.leftnav:hover {
+	width: 15%;
+}
+.leftnav .myicons {
+	margin: 0.5em;	
+}
+i.myicons {	
+	vertical-align: middle !important;
+}
+.menu-item-name{
+	display: none;
+}
+.leftnav:hover .menu-item-name, .rightnav:hover .menu-item-name{
+	display: inline-block;
+}
+.item, .item2 {
+	overflow: hidden;	
+	padding-left: 0rem;
+}
+.item3{
+	overflow: hidden;	
+	padding-right: 0rem;
+}
+.menu2{
+	white-space: nowrap;
+	opacity: 0.8;
+}
+.menu2:hover{
+	opacity: 0.95;
+}
+.menu2 ul .active, .menu2 li .active{
+	border-left: 3px solid #d19b3d;
+}
+.assig2{
+	font-size: 1.3em;
+	text-align: center;
+	margin: auto;
+}
+.ajuste{
+	white-space: pre-wrap;
+	padding-bottom: 0;
+	padding-top: 0;
+}
+.mydropright{
+	border:  .2em solid;
+	margin-left: 3%;
+	font-size: 0.85em;
+}
+.footer2{
+	position: absolute;
+	bottom: 0;
+	overflow: auto;
+	font-size: 0.7rem;
+	opacity: 0.9;	
+}
+.oculta2{
+	display: none;
+	text-align: center;
+}
+.leftnav:hover  .oculta2{
+	display: inherit;
+	transition: display .9s;
+}
+.rightnav{
+	overflow: auto;
+	position: fixed;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	font-size: 0.8rem;
+	/*	display: inline-block;*/	
+	width: 4%;
+	transition: width .7s;
+}
+.rightnav:hover {
+	width: 13%;
+}
+.rightnav .myicons {
+	margin: 0.3em;	
+}
+.logos{
+	margin-top: 20%;
+	vertical-align: middle !important;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+	.assig2{
+		font-size: 0.7em;
+	}
+	.leftnav {
+		font-size: 0.7rem;	
+		width: 15%;		
+	}.leftnav:hover {
+		width: 35%;
+	}
+	.leftnav .myicons {
+		margin: 0.2em;	
+	}
+	.mydropright{
+		border:  .1em solid;
+		margin-left: 1%;
+		font-size: 0.65em;
+	}
+	.footer2{		
+		font-size: 0.5rem;		
+	}
+	.rightnav{
+		font-size: 0.6rem;	
+		width: 15%;
+	}
+	.rightnav:hover {
+		width: 35%;
+	}
+}
+/* Small devices */
+@media only screen and (min-width: 576px) and (max-width: 767.98px){
+	.assig2{
+		font-size: 0.7em;
+	}
+	.leftnav {
+		font-size: 0.7rem;	
+		width: 10%;		
+	}.leftnav:hover {
+		width: 28%;
+	}
+	.mydropright{
+		border:  .1em solid;
+		margin-left: 1%;
+		font-size: 0.65em;
+	}
+	.footer2{		
+		font-size: 0.5rem;		
+	}
+	.rightnav{
+		font-size: 0.6rem;	
+		width: 10%;
+	}
+	.rightnav:hover {
+		width: 25%;
+	}
+}
+/* Medium devices (tablets, less than 992px)*/
+@media only screen and  (min-width: 768px) and (max-width: 991.98px){
+	.assig2{
+		font-size: 0.7em;
+	}
+	.leftnav {
+		font-size: 0.7rem;	
+		width: 8%;		
+	}.leftnav:hover {
+		width: 22%;
+	}
+	.mydropright{
+		border:  .1em solid;
+		margin-left: 1%;
+		font-size: 0.65em;
+	}
+	.footer2{		
+		font-size: 0.5rem;		
+	}
+	.rightnav{
+		font-size: 0.6rem;	
+		width: 8%;
+	}
+	.rightnav:hover {
+		width: 18%;
+	}
+}
+/* Large devices (desktops)*/
+@media only screen and (min-width : 992px) and  (max-width : 1200px){
+	.leftnav {		
+		width: 6%;		
+	}
+	.leftnav:hover {
+		width: 18%;
+	}
+	.rightnav{
+		width: 6%;
+	}
+	.rightnav:hover {
+		width: 16%;
+	}	
+}
+/*
+.facebook2, .twitter2, .multi2{
+	background-size: 70% 80%;
+	background-position:center;
+	background-repeat: no-repeat;
+}
+.facebook2{
+	width: 70%;
+}
+.multi2{
+	width: 145%;
+}
+.twitter2{
+	width: 95%;
+}*/
+/* ++++++++++ Estilos plantilla 3 +++++++++++ */
+.header3{
+	border-bottom:  .6em solid;
+	top: 0;
+	opacity: 0.9;
+	border-bottom-left-radius: 4em;
+	border-bottom-right-radius: 4em;
+}
+.assig_name3{
+	line-height : 0.4em;
+}
+.assig3{
+	text-align: center;
+	font-size: 1.5em;
+	height: 2em;
+}
+.centro3{
+	text-align: center;
+}
+.login3{
+	border-bottom-left-radius: 4em;
+	border-bottom-right-radius: 4em;
+	border-bottom:  .5em solid;
+	padding: 0;
+}
+.login3 > ul{
+	margin-left: 40%;
+}
+.fix-bottom{
+	position: fixed;
+	bottom: 0;
+}
+.nav3{		    
+	border-top: .5em solid;
+	border-radius: 4em;
+}
+.nav3  a{
+	border-radius: 4em;
+}
+.nav3 li a:hover, .login3 li a:hover{
+    opacity: 0.4;
+}
+.nav3 ul .active, .nav3 li .active{
+	border-left: 3px solid #d19b3d;
+}
+.mydrop3{
+	border:  .3em solid;
+}
+.footer3{
+	overflow: auto;
+	font-size: 0.7rem;
+	opacity: 0.9;	
+}
+.oculta3{
+	display: none;
+	text-align: center;
+}
+.footer3:hover .oculta3{
+	display: inherit;
+	transition: display .9s;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+	.login3{
+		font-size: 0.7em;
+	}
+	.assig3{
+		font-size: 0.9em;
+	}
+	.footer3{
+		font-size: 0.5em;
+	}
+}
+/* Small devices */
+@media only screen and (min-width: 576px) and (max-width: 767.98px){
+	.assig3{
+		font-size: 1.1em;
+	}
+	.footer3{
+		font-size: 0.5em;
+	}
+}
+/* Medium devices (tablets, less than 992px)*/
+@media only screen and  (min-width: 768px) and (max-width: 991.98px){
+	.login3{
+		font-size: 0.8em;
+	}
+	.assig3{
+		font-size: 1.3em;
+	}
+}
+/* Large devices (desktops)*/
+@media only screen and (min-width : 992px) and  (max-width : 1200px){
+	.assig3{
+		font-size: 1.3em;
+	}
+}
+

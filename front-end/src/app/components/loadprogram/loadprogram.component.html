@@ -1,0 +1,55 @@
+<div class="contenido0 container-fluid" *ngIf="identity && identity.role=='ROLE_ADMIN'">
+	<div class="row justify-content-center">
+		<i class="info"> Para poder subir el temario es necesario tener los temas y subtemas en archivos separados</i>
+	</div> <hr class="col-10">
+	<div class="row justify-content-center">
+		<div class="col-12 col-md-10">
+      
+      		<!-- Lista de assignaturas -->
+			<div class="row justify-content-center">				
+				<label class="col-10 labelcenter">Selecciona una asignatura para ver/agregar su temario</label>
+				<form class="col-10 col-md-6 col-lg-4">
+					<mat-form-field class="inputMulti">
+						<input class="" type="text" class="" placeholder="Selecciona asignatura" 
+						matInput [formControl]="myControl" [matAutocomplete]="auto">				
+						<mat-icon matSuffix >keyboard_arrow_down</mat-icon>							
+						<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+							<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+							{{option.assignment_name}}
+							</mat-option>
+						</mat-autocomplete>
+					</mat-form-field>						
+				</form>		
+      		</div>
+            		
+			<div class="row justify-content-center">									
+					<button type="button" (click)="ver()" class="btn btn-success btn-sm" *ngIf="myControl.value!=null">Aceptar</button>				
+			</div> <hr class="col-10">
+			
+			<!-- Opciones para subir los archivos -->
+			<div class="row justify-content-center" *ngIf="myControl.value!=null && temario=='no'">				
+				<div class="col-10 col-md-4">
+					<label>Temas de la asignatura</label><br>
+					<input type="file" placeholder="Subir Temas" (change)="fileChangeEvent($event)" required/>
+				</div>		
+				<div class="col-10 col-md-4" *ngIf="topicsFile!=null">
+					<label>Subtemas de la asignatura</label><br>
+					<input type="file" placeholder="Subir Subtemas" (change)="fileChangeEvent2($event)" required/>
+				</div>		
+				<hr class="col-10">		
+				<button type="button" (click)="carga()" class="btn btn-success btn-sm col-10 col-md-4" *ngIf="topicsFile!=null && subtopicsFile!=null">Cargar temario</button>
+			</div> 		
+
+			<!--Temario-->
+			<div class="row justify-content-center" *ngIf="myControl.value!=null && temario=='si'">				
+				<mat-optgroup *ngFor="let topic of topics" [label]="topic.num_topic +space+ topic.name" class="temario col-8 col-sm-6 col-md-5">
+					<ng-container *ngFor="let subtopic of subtopics">
+						<mat-option class="subtema"  *ngIf="subtopic.topic_id == topic.topic_id" [value]="subtopic.subtopic_id">
+							{{subtopic.num_subtopic}}	{{subtopic.name}}
+						</mat-option>
+					</ng-container>										
+				</mat-optgroup>				
+			</div> 								
+		</div>
+	</div>
+</div>

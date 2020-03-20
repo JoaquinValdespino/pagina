@@ -1,0 +1,51 @@
+<div class="contenido container-fluid" *ngIf="identity && identity.role=='ROLE_ADMIN'">
+	<div class="row justify-content-center">
+		<i class="info">Nota: La aplicación crea automaticamente el usuario "Administrador Profesor". Ejemplo:<br>
+			userProf  ->  admin-userProf <br>
+			profPass  ->  adminprofPass
+		</i>
+	</div> <hr>
+	<div class="row justify-content-center">
+		<h2><i class="material-icons myicons">person_add</i>{{title}}</h2>
+	</div>
+	<div class="row justify-content-center">
+		<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-12 col-md-10" >
+			<div class="row justify-content-center">
+				<mat-form-field class="matfield col-10 col-md-6 col-lg-4">
+					<input matInput placeholder="Nombre de la Asignatura" name="assignment_name" [(ngModel)]="user.assignment_name" required>
+					<mat-icon matSuffix >book</mat-icon>
+				</mat-form-field>
+				<mat-form-field class="matfield col-10 col-md-6 col-lg-4">
+					<input matInput placeholder="Clave de la asignatura" name="clave_assignment" [(ngModel)]="clave_assignment" required>
+					<mat-icon matSuffix >label</mat-icon>
+				</mat-form-field>
+			</div>
+			<div class="row justify-content-center">
+				<mat-form-field class="matfield col-10 col-md-6 col-lg-4">
+					<input matInput placeholder="Nombre de usuario (Profesor)" name="name" [(ngModel)]="user.name" required>
+					<mat-icon matSuffix >account_circle</mat-icon>
+				</mat-form-field>
+				<mat-form-field class="matfield col-10 col-md-6 col-lg-4">
+					<input matInput placeholder="Contraseña (Profesor)" [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="user.password" required>
+					<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+				</mat-form-field>
+			</div>
+			<div class="row justify-content-center">
+				<mat-form-field class="matfield col-10 col-md-6 col-lg-4">					
+					<input type="email" matInput placeholder="Correo electrónico (Admin Prof)" name="email" [(ngModel)]="user.email" required>
+					<mat-icon matSuffix >mail</mat-icon>
+				</mat-form-field>
+				<p class="col-10 col-md-6 col-lg-4">
+					<label>Subir foto de perfil</label>
+					<input type="file" placeholder="Subir archivo" (change)="fileChangeEvent($event)" />
+				</p>
+			</div>
+			<div class="row justify-content-center">
+				<!--<input-file inputId="input-file" placeholder="Drop files below!"></input-file>-->
+				<input type="submit" value="Registrar" class="btn btn-primary col-6" [disabled]="!registerForm.form.valid"/>
+			</div>
+		
+		
+		</form>
+	</div>
+</div>

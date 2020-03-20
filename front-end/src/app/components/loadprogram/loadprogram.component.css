@@ -1,0 +1,49 @@
+/* ****************** Multimedia ***********************/
+.contenido0{
+    margin-top: 8%;
+    margin-bottom: 10%;
+}
+.temario{
+    font-size: 0.8em;
+}
+.subtema{
+    font-size: 0.7em;
+    height: 1.2em;
+}
+.info{
+    font-size: 0.8em;
+}
+.inputMulti{
+    width: 100%;
+}
+.labelcenter{
+    text-align: center;
+}
+/*Extra Small devices*/
+@media only screen and (max-width: 575.98px){
+    .contenido0{
+        margin-top: 20%;
+        margin-bottom: 25%;
+    }
+}
+/*Small devices (landscape phones, 576 - 768px)*/
+@media only screen and (min-width: 576px) and (max-width: 767.98px){
+    .contenido0{
+        margin-top: 20%;
+        margin-bottom: 25%;
+    }
+}
+/* Medium devices */
+@media only screen and (min-width: 768px) and (max-width : 991.98px){
+    .contenido0{
+        margin-top: 20%;
+        margin-bottom: 25%;
+    }
+}
+/* Large Devices */
+@media only screen and (min-width: 992px) and (max-width : 1200px){
+    .contenido0{
+        margin-top: 20%;
+        margin-bottom: 25%;
+    }
+}

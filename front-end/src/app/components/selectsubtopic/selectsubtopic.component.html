@@ -1,0 +1,104 @@
+<!--  +++++++++++++++++++  Plantilla 1 ++++++++++++++++++++++++++++++ -->
+<div class="contenido1 container-fluid"  *ngIf="this.template_select=='first'">
+	<div class="row justify-content-center">
+		<p class="info col-10 col-sm-10 col-md-8 col-lg-6 col-xl-6">Selecciona el subtema y el tipo de material que estas buscando</p>
+	</div> <hr>
+	<div class="row justify-content-center">
+		<form #selectsubtopicForm="ngForm" (ngSubmit)="onSubmit(selectElemDos.value)" class="col-10 col-sm-10 col-md-8 col-lg-6 col-xl-4" >
+			<div class="row justify-content-center">
+				<mat-form-field class="matfield">
+					<mat-select name="subtopic_id" placeholder="Elige un subtema" [(ngModel)]="subtopicSelect" #selectElemUno required>									
+						<mat-optgroup *ngFor="let topic of topics" [label]="topic.num_topic+space+topic.name">
+							<ng-container *ngFor="let subtopic of subtopics">
+								<mat-option   *ngIf="subtopic.topic_id == topic.topic_id" [value]="subtopic">
+									{{subtopic.num_subtopic}}	{{subtopic.name}}
+								</mat-option>
+							</ng-container>										
+						</mat-optgroup>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div class="row justify-content-center">
+				<mat-form-field class="matfield">
+					<mat-select name="tipoET" placeholder="Elige el tipo de material" #selectElemDos required >
+						<mat-option value="Ejercicio">Ejercicio</mat-option>
+						<mat-option value="Tutorial">Tutorial</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>					
+			<input type="submit" value="Buscar materiales" class="btn btn-success" [disabled]="!selectElemUno.value"/>
+		</form>
+	</div>		
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 1 ++++++++++++++++++++++++++++++ -->
+
+
+
+<!--  +++++++++++++++++++  Plantilla 2 ++++++++++++++++++++++++++++++ -->
+<div class="contenido2" *ngIf="this.template_select=='second'">
+	<div class="row justify-content-center">
+		<p class="info col-10 col-md-8 col-lg-6 col-xl-6">Selecciona el subtema y el tipo de material que estas buscando</p>
+	</div> <hr>
+	<div class="row justify-content-center">
+		<form #selectsubtopicForm="ngForm" (ngSubmit)="onSubmit(selectElemDos.value)" class="col-10 col-sm-10 col-md-8 col-lg-6 col-xl-4" >
+			<div class="row justify-content-center">
+				<mat-form-field class="matfield">
+					<mat-select name="subtopic_id" placeholder="Elige un subtema" [(ngModel)]="subtopicSelect" #selectElemUno required>									
+						<mat-optgroup *ngFor="let topic of topics" [label]="topic.num_topic+space+topic.name">
+							<ng-container *ngFor="let subtopic of subtopics">
+								<mat-option   *ngIf="subtopic.topic_id == topic.topic_id" [value]="subtopic">
+									{{subtopic.num_subtopic}}	{{subtopic.name}}
+								</mat-option>
+							</ng-container>										
+						</mat-optgroup>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div class="row justify-content-center">
+				<mat-form-field class="matfield">
+					<mat-select name="tipoET" placeholder="Elige el tipo de material" #selectElemDos required >
+						<mat-option value="Ejercicio">Ejercicio</mat-option>
+						<mat-option value="Tutorial">Tutorial</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>					
+			<input type="submit" value="Buscar materiales" class="btn btn-success" [disabled]="!selectElemUno.value"/>
+		</form>
+	</div>	
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 2 ++++++++++++++++++++++++++++++ -->
+
+
+<!--  +++++++++++++++++++  Plantilla 3 ++++++++++++++++++++++++++++++ -->
+<div class="contenido3" *ngIf="this.template_select=='third'">
+	<div class="row justify-content-center">
+		<p class="info col-10 col-sm-10 col-md-8 col-lg-6 col-xl-6">Selecciona el subtema y el tipo de material que estas buscando</p>
+	</div> <hr>
+	<div class="row justify-content-center">
+		<form #selectsubtopicForm="ngForm" (ngSubmit)="onSubmit(selectElemDos.value)" class="col-10 col-sm-10 col-md-8 col-lg-6 col-xl-4" >
+			<div class="row justify-content-center">
+				<mat-form-field class="matfield">
+					<mat-select name="subtopic_id" placeholder="Elige un subtema" [(ngModel)]="subtopicSelect" #selectElemUno required>									
+						<mat-optgroup *ngFor="let topic of topics" [label]="topic.num_topic+space+topic.name">
+							<ng-container *ngFor="let subtopic of subtopics">
+								<mat-option   *ngIf="subtopic.topic_id == topic.topic_id" [value]="subtopic">
+									{{subtopic.num_subtopic}}	{{subtopic.name}}
+								</mat-option>
+							</ng-container>										
+						</mat-optgroup>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div class="row justify-content-center">
+				<mat-form-field class="matfield">
+					<mat-select name="tipoET" placeholder="Elige el tipo de material" #selectElemDos required >
+						<mat-option value="Ejercicio">Ejercicio</mat-option>
+						<mat-option value="Tutorial">Tutorial</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>					
+			<input type="submit" value="Buscar materiales" class="btn btn-success" [disabled]="!selectElemUno.value"/>
+		</form>
+	</div>		
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 3 ++++++++++++++++++++++++++++++ -->

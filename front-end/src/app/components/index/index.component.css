@@ -1,0 +1,50 @@
+.contenido{
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+.mat-option{
+    font-size: 0.9em;
+}
+.inputAssig{
+    width: 50%;
+}
+form{
+	text-align: center;
+}
+input {
+    opacity: 0.8;
+    padding: 1%;
+}
+
+input:hover , input:focus {
+    opacity: 1;
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px)  {
+    .contenido{
+        margin-top: 20%;
+    }
+ }
+/*Small devices (landscape phones, 576 - 768px)*/
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .contenido{
+        margin-top: 20%;
+    }
+}
+
+/* Medium devices (tablets, 768 - 992px)*/
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .contenido{
+        margin-top: 20%;
+    }
+}
+
+/*// Large devices (desktops, 992 - 1200px)*/
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    .contenido{
+        margin-top: 20%;
+    }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {  }

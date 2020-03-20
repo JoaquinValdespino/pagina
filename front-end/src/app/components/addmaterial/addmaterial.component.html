@@ -1,0 +1,273 @@
+<!--  +++++++++++++++++++  Plantilla 1  ++++++++++++++++++++++++++++++ -->
+<div class="contenido1 container-fluid" *ngIf="this.template_select=='first'">
+	<div class="row justify-content-center">
+		<i class="info">Con el botón puedes intercambiar entre subir un archivo o un link <br>Llena el formulario y sube tu material. 
+		Revisa bien los datos antes enviarlos. </i>
+	</div> <hr>
+	<div class="row justify-content-center">				
+		<button type="button" (click)="option = !option" class="btn btn-primary btn-sm" *ngIf="option">Subir un Link</button>
+		<button type="button" (click)="option = !option" class="btn btn-success btn-sm" *ngIf="!option">Subir un Archivo</button>	
+	</div> <hr class="col-10">
+	<div class="row justify-content-center">
+		<!--Formulario para subir un material -->
+			<form #materialForm="ngForm" (ngSubmit)="onSubmit(materialForm)" class="col-12 col-sm-12 col-md-10" >
+				<!--Se divide en 3 row's-->
+				<div class="row justify-content-center">
+					<!--Cada row tendra 3 elementos del formulario-->
+					<div class="col-10 col-sm-10 col-md-6">
+						<!--Se usa mat-form-field de angular materials-->
+						<mat-form-field class="matfield">  <!-- La input se asocia a un campo del modelo-->
+							<input matInput placeholder="Nombre del material" name="name" [(ngModel)]="material.name" required>
+						</mat-form-field>
+					</div>	
+					<div class="col-6 col-sm-6 col-md-3">
+						<mat-form-field class="matfield">
+							<mat-select name="tipoET" [(ngModel)]="material.tipoET" placeholder="Ejercicio o Tutorial" required>
+								<mat-option value="Ejercicio">Ejercicio</mat-option>
+								<mat-option value="Tutorial">Tutorial</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>				<!-- con ngif valido option para mostrar u ocultar esta parte -->
+					<div class="col-6 col-sm-6 col-md-3" *ngIf="option">  <!--option es para saber si se selecciono un link o un archivo -->
+						<mat-form-field class="matfield">
+								<mat-select name="tipoVD" [(ngModel)]="material.tipoVD" placeholder="Tipo de archivo" required>
+									<mat-option value="Video">Video</mat-option>
+									<mat-option value="Documento">Documento</mat-option>									
+									<mat-option value="Imagen">Imagen</mat-option>
+								</mat-select>
+						</mat-form-field>						
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-10 col-sm-10 col-md-6">
+							<mat-form-field class="matfield">   <!--se usa un ngfor anidado para mostrar los subtemas y los temas -->
+								<mat-select name="subtopic_id" [(ngModel)]="material.subtopic_id" placeholder="Selecciona el subtema">									
+									<mat-optgroup *ngFor="let topic of topics" [label]="topic.num_topic+space+topic.name">
+										<ng-container *ngFor="let subtopic of subtopics" class="myselect">
+											<mat-option   *ngIf="subtopic.topic_id == topic.topic_id" [value]="subtopic.subtopic_id">
+												{{subtopic.num_subtopic}}	{{subtopic.name}}
+											</mat-option>
+										</ng-container>										
+									</mat-optgroup>
+								</mat-select>
+							</mat-form-field>
+					</div>
+					<div class="col-6 col-sm-6 col-md-3">
+						<mat-form-field class="matfield">
+							<mat-select name="dificultad" [(ngModel)]="material.dificultad" placeholder="Dificultad" required>
+								<mat-option [value]="1">1 (Fácil)</mat-option>
+								<mat-option [value]="2">2 (Medio)</mat-option>
+								<mat-option [value]="3">3 (Dificil)</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div class="col-6 col-sm-6 col-md-3">
+						<mat-form-field class="matfield">
+							<mat-select name="profesor" [(ngModel)]="material.profesor" placeholder="Nombre del Profesor" required>								
+									<mat-option *ngFor="let profesor of profesors" [value]="profesor.profesor_name + ' '+profesor.profesor_first_last_name + ' '+profesor.profesor_second_last_name">
+										{{profesor.profesor_name}} {{profesor.profesor_first_last_name}}
+									</mat-option>								
+							</mat-select>
+							<mat-hint>{{material.profesor.profesor_first_last_name}}</mat-hint>
+						</mat-form-field>												
+					</div>					
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-8 col-sm-10 col-md-6" *ngIf="option">
+						<label>Subir archivo de material</label><br>
+						<input type="file" placeholder="Subir archivo" (change)="fileChangeEvent($event)" required/> <br>
+						<mat-hint>El límite para subir archivos es de 12MB </mat-hint>
+					</div>
+					<mat-form-field class="matfield" *ngIf="!option">
+						<input matInput placeholder="Dirección del enlace" name="link" [(ngModel)]="material.link" required> 
+						<mat-hint>Ingresa solo direcciones completas (https://...)</mat-hint>
+					</mat-form-field>
+				</div>			
+				<hr>		
+					<input type="submit" value="Subir material" class="btn btn-success col-6 offset-3 col-sm-6 col-md-4 offset-md-4" [disabled]="!materialForm.form.valid" />
+				</form>
+	</div>
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 1  ++++++++++++++++++++++++++++++ -->
+
+
+
+<!--  +++++++++++++++++++  Plantilla 2 ++++++++++++++++++++++++++++++ -->
+<div class="contenido2" *ngIf="this.template_select=='second'">
+	<div class="row justify-content-center">
+		<i class="info">Con el botón puedes intercambiar entre subir un arcvhivo o un link <br>Llena el formulario y sube tu material. 
+		Revisa bien los datos antes enviarlos. </i>
+	</div> <hr>
+	<div class="row justify-content-center">				
+		<button type="button" (click)="option = !option" class="btn btn-info btn-sm" *ngIf="option">Subir un Link</button>
+		<button type="button" (click)="option = !option" class="btn btn-info btn-sm" *ngIf="!option">Subir un Archivo</button>	
+	</div> <hr class="col-10">
+	<div class="row justify-content-center">
+		<form #materialForm="ngForm" (ngSubmit)="onSubmit(materialForm)" class="col-12 col-sm-12 col-md-10" >
+			<div class="row justify-content-center">
+				<div class="col-10 col-sm-10 col-md-6">
+					<mat-form-field class="matfield">
+						<input matInput placeholder="Nombre del material" name="name" [(ngModel)]="material.name" required>
+					</mat-form-field>
+				</div>	
+				<div class="col-10 col-sm-10 col-md-6">
+						<mat-form-field class="matfield">
+							<mat-select name="subtopic_id" [(ngModel)]="material.subtopic_id" placeholder="Selecciona el subtema">									
+								<mat-optgroup *ngFor="let topic of topics" [label]="topic.num_topic+space+topic.name">
+									<ng-container *ngFor="let subtopic of subtopics" class="myselect">
+										<mat-option   *ngIf="subtopic.topic_id == topic.topic_id" [value]="subtopic.subtopic_id">
+											{{subtopic.num_subtopic}}	{{subtopic.name}}
+										</mat-option>
+									</ng-container>										
+								</mat-optgroup>
+							</mat-select>
+						</mat-form-field>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-6 col-sm-6 col-md-3">
+					<mat-form-field class="matfield">
+						<mat-select name="tipoET" [(ngModel)]="material.tipoET" placeholder="Ejercicio o Tutorial" required>
+							<mat-option value="Ejercicio">Ejercicio</mat-option>
+							<mat-option value="Tutorial">Tutorial</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>				
+				<div class="col-6 col-sm-6 col-md-3" *ngIf="option">
+					<mat-form-field class="matfield">
+							<mat-select name="tipoVD" [(ngModel)]="material.tipoVD" placeholder="Tipo de archivo" required>
+								<mat-option value="Video">Video</mat-option>
+								<mat-option value="Documento">Documento</mat-option>									
+								<mat-option value="Imagen">Imagen</mat-option>
+							</mat-select>
+					</mat-form-field>						
+				</div>				
+				<div class="col-6 col-sm-6 col-md-3">
+					<mat-form-field class="matfield">
+						<mat-select name="dificultad" [(ngModel)]="material.dificultad" placeholder="Dificultad" required>
+							<mat-option [value]="1">1 (Fácil)</mat-option>
+							<mat-option [value]="2">2 (Medio)</mat-option>
+							<mat-option [value]="3">3 (Dificil)</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<div class="col-6 col-sm-6 col-md-3">
+					<mat-form-field class="matfield">
+						<mat-select name="profesor" [(ngModel)]="material.profesor" placeholder="Nombre del Profesor" required>								
+								<mat-option *ngFor="let profesor of profesors" [value]="profesor.profesor_name + ' '+profesor.profesor_first_last_name + ' '+profesor.profesor_second_last_name">
+									{{profesor.profesor_name}} {{profesor.profesor_first_last_name}}
+								</mat-option>								
+						</mat-select>
+						<mat-hint>{{material.profesor.profesor_first_last_name}}</mat-hint>
+					</mat-form-field>												
+				</div>					
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-8 col-sm-10 col-md-6" *ngIf="option">
+					<label>Subir archivo de material</label><br>
+					<input type="file" placeholder="Subir archivo" (change)="fileChangeEvent($event)" required/> <br>
+					<mat-hint>El límite para subir archivos es de 12MB </mat-hint>
+				</div>
+				<mat-form-field class="matfield" *ngIf="!option">
+					<input matInput placeholder="Dirección del enlace" name="link" [(ngModel)]="material.link" required> 
+					<mat-hint>Ingresa solo direcciones completas (https://...)</mat-hint>
+				</mat-form-field>
+			</div>			
+			<hr>		
+				<input type="submit" value="Subir material" class="btn btn-success col-6 offset-3 col-sm-6 col-md-4 offset-md-4" [disabled]="!materialForm.form.valid" />
+		</form>
+	</div>	
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 2  ++++++++++++++++++++++++++++++ -->
+
+
+
+
+
+<!--  +++++++++++++++++++  Plantilla 3 ++++++++++++++++++++++++++++++ -->
+<div class="contenido3" *ngIf="this.template_select=='third'">
+	<div class="row justify-content-center">
+		<i class="info">Con el botón puedes intercambiar entre subir un arcvhivo o un link <br>Llena el formulario y sube tu material. 
+		Revisa bien los datos antes enviarlos. </i>
+	</div> <hr>
+	<div class="row justify-content-center">				
+		<button type="button" (click)="option = !option" class="btn btn-primary btn-sm" *ngIf="option">Subir un Link</button>
+		<button type="button" (click)="option = !option" class="btn btn-success btn-sm" *ngIf="!option">Subir un Archivo</button>	
+	</div> <hr class="col-10">
+	<div class="row justify-content-center">
+			<form #materialForm="ngForm" (ngSubmit)="onSubmit(materialForm)" class="col-12 col-sm-12 col-md-10" >
+				<div class="row justify-content-center">
+					<div class="col-10 col-sm-10 col-md-6">
+						<mat-form-field class="matfield">
+							<input matInput placeholder="Nombre del material" name="name" [(ngModel)]="material.name" required>
+						</mat-form-field>
+					</div>	
+					<div class="col-6 col-sm-6 col-md-3">
+						<mat-form-field class="matfield">
+							<mat-select name="tipoET" [(ngModel)]="material.tipoET" placeholder="Ejercicio o Tutorial" required>
+								<mat-option value="Ejercicio">Ejercicio</mat-option>
+								<mat-option value="Tutorial">Tutorial</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>				
+					<div class="col-6 col-sm-6 col-md-3" *ngIf="option">
+						<mat-form-field class="matfield">
+								<mat-select name="tipoVD" [(ngModel)]="material.tipoVD" placeholder="Tipo de archivo" required>
+									<mat-option value="Video">Video</mat-option>
+									<mat-option value="Documento">Documento</mat-option>									
+									<mat-option value="Imagen">Imagen</mat-option>
+								</mat-select>
+						</mat-form-field>						
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-10 col-sm-10 col-md-6">
+							<mat-form-field class="matfield">
+								<mat-select name="subtopic_id" [(ngModel)]="material.subtopic_id" placeholder="Selecciona el subtema">									
+									<mat-optgroup *ngFor="let topic of topics" [label]="topic.num_topic+space+topic.name">
+										<ng-container *ngFor="let subtopic of subtopics" class="myselect">
+											<mat-option   *ngIf="subtopic.topic_id == topic.topic_id" [value]="subtopic.subtopic_id">
+												{{subtopic.num_subtopic}}	{{subtopic.name}}
+											</mat-option>
+										</ng-container>										
+									</mat-optgroup>
+								</mat-select>
+							</mat-form-field>
+					</div>
+					<div class="col-6 col-sm-6 col-md-3">
+						<mat-form-field class="matfield">
+							<mat-select name="dificultad" [(ngModel)]="material.dificultad" placeholder="Dificultad" required>
+								<mat-option [value]="1">1 (Fácil)</mat-option>
+								<mat-option [value]="2">2 (Medio)</mat-option>
+								<mat-option [value]="3">3 (Dificil)</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div class="col-6 col-sm-6 col-md-3">
+						<mat-form-field class="matfield">
+							<mat-select name="profesor" [(ngModel)]="material.profesor" placeholder="Nombre del Profesor" required>								
+									<mat-option *ngFor="let profesor of profesors" [value]="profesor.profesor_name + ' '+profesor.profesor_first_last_name + ' '+profesor.profesor_second_last_name">
+										{{profesor.profesor_name}} {{profesor.profesor_first_last_name}}
+									</mat-option>								
+							</mat-select>
+							<mat-hint>{{material.profesor.profesor_first_last_name}}</mat-hint>
+						</mat-form-field>												
+					</div>					
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-8 col-sm-10 col-md-6" *ngIf="option">
+						<label>Subir archivo de material</label><br>
+						<input type="file" placeholder="Subir archivo" (change)="fileChangeEvent($event)" required/> <br>
+						<mat-hint>El límite para subir archivos es de 12MB </mat-hint>
+					</div>
+					<mat-form-field class="matfield" *ngIf="!option">
+						<input matInput placeholder="Dirección del enlace" name="link" [(ngModel)]="material.link" required> 
+						<mat-hint>Ingresa solo direcciones completas (https://...)</mat-hint>
+					</mat-form-field>
+				</div>			
+				<hr>		
+					<input type="submit" value="Subir material" class="btn btn-success col-6 offset-3 col-sm-6 col-md-4 offset-md-4" [disabled]="!materialForm.form.valid" />
+				</form>
+	</div>
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 3  ++++++++++++++++++++++++++++++ -->

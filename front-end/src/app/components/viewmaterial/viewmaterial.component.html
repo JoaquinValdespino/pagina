@@ -1,0 +1,163 @@
+<!--  +++++++++++++++++++  Plantilla 1 ++++++++++++++++++++++++++++++ -->
+<div class="contenido1 container-fluid"  *ngIf="this.template_select=='first'">
+	<div class="row justify-content-center">
+		<i class="info" >El filtro debe ser usado en la primer página de la tabla para una búsqueda correcta.</i>
+	</div> <hr>
+	<div class="row justify-content-center">
+		<i class="subt"> {{subtopic.num_subtopic}} {{subtopic.name}} </i>
+		<div class="col-12 col-md-12 col-lg-10 col-xl-10 table-responsive" >
+				<mat-form-field class="col-8 col-sm-6 col-md-4">
+					<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+				</mat-form-field>
+				
+				<button type="button" [routerLink]="['/selectsubtopic']" class="btn btn-primary btn-sm offset-md-3">Seleccionar otro subtema </button>  
+				<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mytable ">
+									
+				<ng-container matColumnDef="Nombre" > <!--Hace referencia al arrglo displayedColumns-->
+					<th mat-header-cell *matHeaderCellDef> Nombre </th>
+					<td mat-cell *matCellDef="let element" class=""> {{element.name}} </td> <!--despues del punto se refiere al arreglo-->
+				</ng-container>
+									
+				<ng-container matColumnDef="Dificultad">
+					<th mat-header-cell *matHeaderCellDef class="oculta"> Dificultad </th>
+					<td mat-cell *matCellDef="let element" class="oculta"> {{element.dificultad}} </td>
+				</ng-container>					  
+				
+				<ng-container matColumnDef="Profesor">
+					<th mat-header-cell *matHeaderCellDef class=""> Profesor </th>
+					<td mat-cell *matCellDef="let element" class=""> {{element.profesor}} </td>
+				</ng-container>
+									
+				<ng-container matColumnDef="Tipo">
+					<th mat-header-cell *matHeaderCellDef> Tipo </th>
+					<td mat-cell *matCellDef="let element"> {{element.tipoVD}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="Archivo" >
+					<th mat-header-cell *matHeaderCellDef> Archivo </th>
+					<td mat-cell *matCellDef="let element"> 
+						<a *ngIf="element.file" target="blank" href="{{url + 'getFile/'+ element.file}}"  download={{element.file}}>
+						<i class="material-icons myicons ">archive </i>
+						<i class="oculta"> {{element.file | slice:10:limit}}</i> </a>
+						<a *ngIf="element.link" target="blank" href="{{element.link}}">
+							<i class="material-icons myicons ">link </i> Abrir enlace </a> </td>
+				</ng-container>											
+				
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+			</table>
+			<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+		</div>							  
+	</div>
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 1 ++++++++++++++++++++++++++++++ -->
+
+
+<!--  +++++++++++++++++++  Plantilla 2 ++++++++++++++++++++++++++++++ -->
+<div class="contenido2" *ngIf="this.template_select=='second'">
+	<div class="row justify-content-center">
+		<i class="info" >El filtro debe ser usado en la primer página de la tabla para una búsqueda correcta.</i>		
+	</div> <hr>
+	<div class="row justify-content-center">
+		<i class="subt"> {{subtopic.num_subtopic}} {{subtopic.name}} </i>
+		<div class="col-10 col-md-12 table-responsive" >
+				<mat-form-field class="col-8 col-sm-6 col-md-4">
+					<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+				</mat-form-field>
+				
+				<button type="button" [routerLink]="['/selectsubtopic']" class="btn btn-primary btn-sm offset-md-3">Seleccionar otro subtema </button>  
+					<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mytable ">
+											
+						<ng-container matColumnDef="Nombre" > <!--Hace referencia al arrglo displayedColumns-->
+							<th mat-header-cell *matHeaderCellDef> Nombre </th>
+							<td mat-cell *matCellDef="let element" class=""> {{element.name}} </td> <!--despues del punto se refiere al arreglo-->
+						</ng-container>
+											
+						<ng-container matColumnDef="Dificultad">
+							<th mat-header-cell *matHeaderCellDef class="oculta"> Dificultad </th>
+							<td mat-cell *matCellDef="let element" class="oculta"> {{element.dificultad}} </td>
+						</ng-container>					  
+						
+						<ng-container matColumnDef="Profesor">
+							<th mat-header-cell *matHeaderCellDef class=""> Profesor </th>
+							<td mat-cell *matCellDef="let element" class=""> {{element.profesor}} </td>
+						</ng-container>
+											
+						<ng-container matColumnDef="Tipo">
+							<th mat-header-cell *matHeaderCellDef> Tipo </th>
+							<td mat-cell *matCellDef="let element"> {{element.tipoVD}} </td>
+						</ng-container>
+
+						<ng-container matColumnDef="Archivo" >
+							<th mat-header-cell *matHeaderCellDef> Archivo </th>
+							<td mat-cell *matCellDef="let element"> 
+								<a *ngIf="element.file" target="blank" href="{{url + 'getFile/'+ element.file}}"  download={{element.file}}>
+								<i class="material-icons myicons ">archive </i>
+								<i class="oculta"> {{element.file | slice:10:limit}}</i> </a>
+								<a *ngIf="element.link" target="blank" href="{{element.link}}">
+									<i class="material-icons myicons ">link </i> Abrir enlace</a> </td>
+						</ng-container>											
+						
+						<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+						<tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+					</table>
+					<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+		</div>							  
+	</div>
+</div>
+<!--  +++++++++++++++++++ FIN Plantilla 2 ++++++++++++++++++++++++++++++ -->
+
+
+<!--  +++++++++++++++++++  Plantilla 3 ++++++++++++++++++++++++++++++ -->
+<div class="contenido3" *ngIf="this.template_select=='third'">
+	<div class="row justify-content-center">
+		<i class="info" >El filtro debe ser usado en la primer página de la tabla para una búsqueda correcta.</i>
+	</div> <hr>
+	<div class="row justify-content-center">
+		<i class="subt col-12 col-md-12 col-lg-10 col-xl-10"> {{subtopic.num_subtopic}} {{subtopic.name}} </i>
+		<div class="col-12 col-md-12 col-lg-10 col-xl-10 table-responsive" >
+				<mat-form-field class="col-8 col-sm-6 col-md-4">
+					<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+				</mat-form-field>
+				
+				<button type="button" [routerLink]="['/selectsubtopic']" class="btn btn-primary btn-sm offset-md-3">Seleccionar otro subtema </button>  
+				<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mytable ">
+									
+				<ng-container matColumnDef="Nombre" > <!--Hace referencia al arrglo displayedColumns-->
+					<th mat-header-cell *matHeaderCellDef> Nombre </th>
+					<td mat-cell *matCellDef="let element" class=""> {{element.name}} </td> <!--despues del punto se refiere al arreglo-->
+				</ng-container>
+									
+				<ng-container matColumnDef="Dificultad">
+					<th mat-header-cell *matHeaderCellDef class="oculta"> Dificultad </th>
+					<td mat-cell *matCellDef="let element" class="oculta"> {{element.dificultad}} </td>
+				</ng-container>					  
+				
+				<ng-container matColumnDef="Profesor">
+					<th mat-header-cell *matHeaderCellDef class=""> Profesor </th>
+					<td mat-cell *matCellDef="let element" class=""> {{element.profesor}} </td>
+				</ng-container>
+									
+				<ng-container matColumnDef="Tipo">
+					<th mat-header-cell *matHeaderCellDef> Tipo </th>
+					<td mat-cell *matCellDef="let element"> {{element.tipoVD}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="Archivo" >
+					<th mat-header-cell *matHeaderCellDef> Archivo </th>
+					<td mat-cell *matCellDef="let element"> 
+						<a *ngIf="element.file" target="blank" href="{{url + 'getFile/'+ element.file}}"  download={{element.file}}>
+						<i class="material-icons myicons ">archive </i>
+						<i class="oculta"> {{element.file | slice:10:limit}}</i> </a>
+						<a *ngIf="element.link" target="blank" href="{{element.link}}">
+							<i class="material-icons myicons ">link </i> Abrir enlace </a> </td>
+				</ng-container>											
+				
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+			</table>
+			<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+		</div>							  
+	</div>
+</div>
+<!--  +++++++++++++++++++ FIN Plantilla 3 ++++++++++++++++++++++++++++++ -->

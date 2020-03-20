@@ -1,0 +1,185 @@
+<!--  +++++++++++++++++++  Plantilla 1 ++++++++++++++++++++++++++++++ -->
+<div class="contenido1 container-fluid"  *ngIf="this.template_select=='first'">
+	<div class="row justify-content-center">
+		<i class="info">Llena el formulario y tu solicitud será enviada al administrador de la asignatura.<br> 
+		Puedes consultar el estatus de tu solicitud en el apartado: "Ver solicitudes de eliminación" </i>
+	</div> <hr>
+	<div class="row justify-content-center">
+		<form #requestForm="ngForm" (ngSubmit)="onSubmit()" class="col-12 col-sm-12 col-md-10 col-lg-8" >
+			<div class="row justify-content-center">
+				<div class="col-10 col-sm-10 col-md-6">
+					<mat-form-field class="matfield">
+						<input matInput placeholder="Nombre del material" name="name" [(ngModel)]="request.name" required>
+					</mat-form-field>
+				</div>	
+				<div class="col-10 col-sm-10 col-md-6">
+					<mat-form-field class="matfield">
+						<mat-select name="subtopic_id" [(ngModel)]="request.subtopic" placeholder="Selecciona el subtema" required>									
+							<mat-optgroup *ngFor="let topic of topics" [label]="topic.num_topic+space+topic.name">
+								<ng-container *ngFor="let subtopic of subtopics" class="myselect">
+									<mat-option   *ngIf="subtopic.topic_id == topic.topic_id" [value]="subtopic.subtopic_id">
+										{{subtopic.num_subtopic}}	{{subtopic.name}}
+									</mat-option>
+								</ng-container>										
+							</mat-optgroup>
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>	
+			<div class="row justify-content-center">
+				<div class="col-6 col-sm-6 col-md-4">
+					<mat-form-field class="matfield">
+						<mat-select name="tipoET" [(ngModel)]="request.tipoET" placeholder="Tipo de Material" required>
+							<mat-option value="Ejercicio">Ejercicio</mat-option>
+							<mat-option value="Tutorial">Tutorial</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>			
+				<div class="col-6 col-sm-6 col-md-4">
+					<mat-form-field class="matfield">
+						<mat-select name="profesor" [(ngModel)]="request.profesor_name" placeholder="Nombre del Profesor" required>								
+								<mat-option *ngFor="let profesor of profesors" [value]="profesor.profesor_name + ' '+profesor.profesor_first_last_name + ' '+profesor.profesor_second_last_name">
+									{{profesor.profesor_name}} {{profesor.profesor_first_last_name}}
+								</mat-option>								
+						</mat-select>						
+					</mat-form-field>												
+				</div>		
+			</div>	
+			<div class="row justify-content-center">
+					<div class="col-8 col-sm-8 col-md-6">
+						<mat-form-field class="matfield">
+							<textarea matInput name="justification" [(ngModel)]="request.justification"  placeholder="Justificación" required></textarea>
+						</mat-form-field>
+					</div>
+			</div>	<hr>
+			<input type="submit" value="Enviar Solicitud" class="btn btn-success col-6 offset-3 col-sm-6 col-md-4 offset-md-4" [disabled]="!requestForm.form.valid" />				
+		</form>
+	</div>
+</div>
+<!--  +++++++++++++++++++ FIN Plantilla 1 ++++++++++++++++++++++++++++++ -->
+
+
+
+
+<!--  +++++++++++++++++++  Plantilla 2 ++++++++++++++++++++++++++++++ -->
+<div class="contenido2" *ngIf="this.template_select=='second'">
+	<div class="row justify-content-center">
+		<i class="info">Llena el formulario y tu solicitud será enviada al administrador de la asignatura.<br> 
+		Puedes consultar el estatus de tu solicitud en el apartado: "Ver solicitudes de eliminación" </i>
+	</div> <hr>
+	<div class="row justify-content-center">
+		<form #requestForm="ngForm" (ngSubmit)="onSubmit()" class="col-12 col-sm-12 col-md-10 col-lg-8" >
+			<div class="row justify-content-center">
+				<div class="col-10 col-sm-10 col-md-6">
+					<mat-form-field class="matfield">
+						<input matInput placeholder="Nombre del material" name="name" [(ngModel)]="request.name" required>
+					</mat-form-field>
+				</div>	
+				<div class="col-10 col-sm-10 col-md-6">
+					<mat-form-field class="matfield">
+						<mat-select name="subtopic_id" [(ngModel)]="request.subtopic" placeholder="Selecciona el subtema" required>									
+							<mat-optgroup *ngFor="let topic of topics" [label]="topic.num_topic+space+topic.name">
+								<ng-container *ngFor="let subtopic of subtopics" class="myselect">
+									<mat-option   *ngIf="subtopic.topic_id == topic.topic_id" [value]="subtopic.subtopic_id">
+										{{subtopic.num_subtopic}}	{{subtopic.name}}
+									</mat-option>
+								</ng-container>										
+							</mat-optgroup>
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>	
+			<div class="row justify-content-center">
+				<div class="col-8 col-md-6">
+					<mat-form-field class="matfield">
+						<mat-select name="tipoET" [(ngModel)]="request.tipoET" placeholder="Tipo de Material" required>
+							<mat-option value="Ejercicio">Ejercicio</mat-option>
+							<mat-option value="Tutorial">Tutorial</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>			
+				<div class="col-8 col-md-6">
+					<mat-form-field class="matfield">
+						<mat-select name="profesor" [(ngModel)]="request.profesor_name" placeholder="Nombre del Profesor" required>								
+								<mat-option *ngFor="let profesor of profesors" [value]="profesor.profesor_name + ' '+profesor.profesor_first_last_name + ' '+profesor.profesor_second_last_name">
+									{{profesor.profesor_name}} {{profesor.profesor_first_last_name}}
+								</mat-option>								
+						</mat-select>						
+					</mat-form-field>												
+				</div>		
+			</div>	
+			<div class="row justify-content-center">
+					<div class="col-8 col-sm-8 col-md-6">
+						<mat-form-field class="matfield">
+							<textarea matInput name="justification" [(ngModel)]="request.justification"  placeholder="Justificación" required></textarea>
+						</mat-form-field>
+					</div>
+			</div>	<hr>
+			<input type="submit" value="Enviar Solicitud" class="btn btn-success col-6 offset-3 col-sm-6 col-md-4 offset-md-4" [disabled]="!requestForm.form.valid" />				
+		</form>
+	</div>
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 2 ++++++++++++++++++++++++++++++ -->
+
+
+
+
+<!--  +++++++++++++++++++  Plantilla 3 ++++++++++++++++++++++++++++++ -->
+<div class="contenido3 col-lg-12" *ngIf="this.template_select=='third'">
+	<div class="row justify-content-center">
+		<i class="info">Llena el formulario y tu solicitud será enviada al administrador de la asignatura.<br> 
+		Puedes consultar el estatus de tu solicitud en el apartado: "Ver solicitudes de eliminación" </i>
+	</div> <hr>
+	<div class="row justify-content-center">
+		<form #requestForm="ngForm" (ngSubmit)="onSubmit()" class="col-12 col-sm-12 col-md-10 col-lg-8" >
+			<div class="row justify-content-center">
+				<div class="col-10 col-sm-10 col-md-6">
+					<mat-form-field class="matfield">
+						<input matInput placeholder="Nombre del material" name="name" [(ngModel)]="request.name" required>
+					</mat-form-field>
+				</div>	
+				<div class="col-10 col-sm-10 col-md-6">
+					<mat-form-field class="matfield">
+						<mat-select name="subtopic_id" [(ngModel)]="request.subtopic" placeholder="Selecciona el subtema" required>									
+							<mat-optgroup *ngFor="let topic of topics" [label]="topic.num_topic+space+topic.name">
+								<ng-container *ngFor="let subtopic of subtopics" class="myselect">
+									<mat-option   *ngIf="subtopic.topic_id == topic.topic_id" [value]="subtopic.subtopic_id">
+										{{subtopic.num_subtopic}}	{{subtopic.name}}
+									</mat-option>
+								</ng-container>										
+							</mat-optgroup>
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>	
+			<div class="row justify-content-center">
+				<div class="col-6 col-sm-6 col-md-4">
+					<mat-form-field class="matfield">
+						<mat-select name="tipoET" [(ngModel)]="request.tipoET" placeholder="Tipo de Material" required>
+							<mat-option value="Ejercicio">Ejercicio</mat-option>
+							<mat-option value="Tutorial">Tutorial</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>			
+				<div class="col-6 col-sm-6 col-md-4">
+					<mat-form-field class="matfield">
+						<mat-select name="profesor" [(ngModel)]="request.profesor_name" placeholder="Nombre del Profesor" required>								
+								<mat-option *ngFor="let profesor of profesors" [value]="profesor.profesor_name + ' '+profesor.profesor_first_last_name + ' '+profesor.profesor_second_last_name">
+									{{profesor.profesor_name}} {{profesor.profesor_first_last_name}}
+								</mat-option>								
+						</mat-select>						
+					</mat-form-field>												
+				</div>		
+			</div>	
+			<div class="row justify-content-center">
+					<div class="col-8 col-sm-8 col-md-6">
+						<mat-form-field class="matfield">
+							<textarea matInput name="justification" [(ngModel)]="request.justification"  placeholder="Justificación" required></textarea>
+						</mat-form-field>
+					</div>
+			</div>	<hr>
+			<input type="submit" value="Enviar Solicitud" class="btn btn-success col-6 offset-3 col-sm-6 col-md-4 offset-md-4" [disabled]="!requestForm.form.valid" />				
+		</form>
+	</div>
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 3 ++++++++++++++++++++++++++++++ -->

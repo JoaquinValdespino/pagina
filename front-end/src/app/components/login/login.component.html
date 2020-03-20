@@ -1,0 +1,92 @@
+<!--  +++++++++++++++++++  SI NO HAY ASIGNATURA SELECCIONADA ++++++++++++++++++++++++++++++ -->
+<div class="contenido0 container-fluid" *ngIf="!this.template">	
+	<div class="row justify-content-center">
+		<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="col-10 col-sm-10 col-md-8 col-lg-4">
+				<h2>{{title}}</h2>
+				<mat-form-field class="matfield">
+					<input matInput placeholder="Usuario" name="usuaio" [(ngModel)]="user.name" required>
+				</mat-form-field>
+				
+				<mat-form-field class="matfield">
+					<input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="user.password" required>
+					<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+				</mat-form-field>
+				<input type="submit" value="Aceptar" class="btn btn-dark  btn-block col-6 offset-3" [disabled]="!loginForm.form.valid">			  
+				<mat-progress-spinner mode="indeterminate" class="col-3 offset-5" *ngIf="status=='wait'"></mat-progress-spinner>
+			</form>
+	</div>
+</div>
+<!--  +++++++++++++++++++  FIN sin asignatura seleccionada ++++++++++++++++++++++++++++++ -->
+
+<!--  +++++++++++++++++++  Plantilla 1 ++++++++++++++++++++++++++++++ -->
+<div class="contenido1 container-fluid " *ngIf="this.template_select=='first'">
+	<div class="row justify-content-center">		
+		<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="col-10 col-sm-10 col-md-8 col-lg-4">
+			<h2>{{title}}</h2>
+			<mat-form-field class="matfield">
+			  <input matInput placeholder="Usuario" name="usuaio" [(ngModel)]="user.name" required>
+			</mat-form-field>
+		  
+			<mat-form-field class="matfield">
+				<input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="user.password" required>
+				<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+			</mat-form-field>
+			<input type="submit" value="Aceptar" class="btn btn-dark  btn-block col-6 offset-3" [disabled]="!loginForm.form.valid">			  
+			<mat-progress-spinner mode="indeterminate" class="col-3 offset-5" *ngIf="status=='wait'"></mat-progress-spinner>
+		</form>
+		  
+	</div>
+</div>
+<!--  +++++++++++++++++++ FIN Plantilla 1 ++++++++++++++++++++++++++++++ -->
+
+
+
+<!--  +++++++++++++++++++  Plantilla 2 ++++++++++++++++++++++++++++++ -->
+<div class="contenido2" *ngIf="this.template_select=='second'">
+	<div class="row justify-content-center">		
+		<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="col-10 col-sm-10 col-md-8 col-lg-4">
+			<h2>{{title}}</h2>
+			<mat-form-field class="matfield">
+			  <input matInput placeholder="Usuario" name="usuaio" [(ngModel)]="user.name" required>
+			</mat-form-field>
+		  
+			<mat-form-field class="matfield">
+				<input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="user.password" required>
+				<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+			</mat-form-field>
+			<input type="submit" value="Aceptar" class="btn btn-dark  btn-block col-6 offset-3" [disabled]="!loginForm.form.valid">			  
+			<mat-progress-spinner mode="indeterminate" class="col-3 offset-5" *ngIf="status=='wait'"></mat-progress-spinner>
+		</form>		  
+	</div>	
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 2 ++++++++++++++++++++++++++++++ -->
+
+
+
+
+<!--  +++++++++++++++++++  Plantilla 3 ++++++++++++++++++++++++++++++ -->
+<div class="contenido3" *ngIf="this.template_select=='third'">	
+	<div class="row justify-content-center">		
+		<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="col-10 col-sm-10 col-md-8 col-lg-4">
+			<h2>{{title}}</h2>
+			<mat-form-field class="matfield">
+				<input matInput placeholder="Usuario" name="usuaio" [(ngModel)]="user.name" required>
+			</mat-form-field>
+			
+			<mat-form-field class="matfield">
+				<input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="user.password" required>
+				<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+			</mat-form-field>
+			<input type="submit" value="Aceptar" class="btn btn-dark  btn-block col-6 offset-3" [disabled]="!loginForm.form.valid">			  
+			<mat-progress-spinner mode="indeterminate" class="col-3 offset-5" *ngIf="status=='wait'"></mat-progress-spinner>
+		</form>		  
+	</div>		
+</div>
+<!--  +++++++++++++++++++  FIN Plantilla 3 ++++++++++++++++++++++++++++++ -->
+
+
+
+
+
+
+
